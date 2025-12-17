@@ -1,0 +1,38 @@
+{
+  "name": "coral-media/php-ir",
+  "description": "Information Retrieval algorithms (vector space, similarity, clustering)",
+  "keywords": [
+    "information-retrieval",
+    "text-similarity",
+    "cosine-similarity",
+    "tf-idf",
+    "vector-space-model",
+    "clustering",
+    "k-means",
+    "search",
+    "recommendation"
+  ],
+  "authors": [
+    {
+      "name": "Rafael Ernesto Espinosa Santiesteban",
+      "email": "rernesto.espinosa@gmail.com"
+    }
+  ],
+  "type": "library",
+  "require-dev": {
+    "phpunit/phpunit": "^11.5"
+  },
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "CoralMedia\\PhpIr\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "CoralMedia\\PhpIr\\": "tests/"
+    }
+  },
+  "minimum-stability": "stable",
+  "require": {}
+}
