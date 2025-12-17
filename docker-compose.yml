@@ -1,0 +1,15 @@
+services:
+  php-cli:
+    platform: linux/amd64
+    container_name: ir-php-cli
+    build:
+      context: .
+      dockerfile: docker/php-cli/Dockerfile
+    volumes:
+      - .:/srv/app:rw,cached
+      - ./docker/.ssh:/root/.ssh:rw,cached
+      - ./extensions:/opt/extensions:rw,cached
+    working_dir: /srv/app
+    tty: true
+    ports:
+      - "9003:9003"

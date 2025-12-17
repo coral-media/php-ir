@@ -1,0 +1,16 @@
+# Ignore all generated Zephir build output
+**/ext/
+
+# Ignore logs inside extensions
+**/*.log
+**/logs/
+**/log/
+
+# Ignore Zephir temporary files
+**/.zephir*
+**/.temp*
+**/.cache*
+
+# Ignore OS/editor noise
+.DS_Store
+Thumbs.db

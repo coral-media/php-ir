@@ -1,0 +1,62 @@
+########################################
+# Global OS / Editor Noise
+########################################
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+*.tmp
+
+########################################
+# Root-level artifacts
+########################################
+.env
+.env.*
+!.env.example
+
+########################################
+# PHP / Composer
+########################################
+**/vendor/
+**/.phpunit.cache/
+**/coverage/
+**/.php-cs-fixer.cache
+**/.phpstan.cache
+**/.psalm.cache
+
+########################################
+# PHPUnit
+########################################
+phpunit.result.cache
+
+########################################
+# Zephir / Native Extensions
+########################################
+extensions/**/ext/
+extensions/**/.zephir*
+extensions/**/*.log
+extensions/**/logs/
+extensions/**/log/
+
+########################################
+# Build / CI artifacts
+########################################
+build/
+dist/
+tmp/
+
+########################################
+# Docker
+########################################
+docker/**/.env
+docker/**/data/
+docker/**/volumes/
+
+########################################
+# Security / Secrets
+########################################
+*.key
+*.pem
+*.crt
