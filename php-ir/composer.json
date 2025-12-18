@@ -40,7 +40,7 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "CoralMedia\\PhpIr\\Test\\": "tests/"
+      "CoralMedia\\PhpIr\\Tests\\": "tests/"
     }
   },
   "minimum-stability": "stable"
