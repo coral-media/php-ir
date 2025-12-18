@@ -11,7 +11,6 @@ declare(strict_types=1);
 
 namespace CoralMedia\PhpIr\Tests\Clustering;
 
-use CoralMedia\PhpIr\Clustering\KMeansPlusPlusInitializer;
 use CoralMedia\PhpIr\Clustering\RandomCentroidInitializer;
 use CoralMedia\PhpIr\Collection\VectorCollection;
 use CoralMedia\PhpIr\Clustering\KMeans;
