@@ -8,7 +8,7 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ROOT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
-VERSION_FILE="$ROOT_DIR/php-ir/.version"
+VERSION_FILE="$ROOT_DIR/.version"
 EXTENSIONS_DIR="$ROOT_DIR/extensions"
 
 # ---------------------------------------------------------------------------
@@ -107,4 +107,4 @@ if [[ "$EXTENSIONS_FLAG" == "--extensions" ]]; then
   fi
 fi
 
-echo "🎉 Done. Version is now $NEW_VERSION"
+echo "✅ Done. Version is now $NEW_VERSION"
