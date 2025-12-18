@@ -25,7 +25,8 @@ RUN apt-get update && apt-get install -y \
     libonig-dev \
     libxml2-dev \
     libssl-dev \
-    && rm -rf /var/lib/apt/lists/*
+    jq \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # PHP extensions
 RUN docker-php-ext-configure gd \
