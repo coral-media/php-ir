@@ -21,7 +21,7 @@ final readonly class KMeans
 {
     public function __construct(
         private readonly SimilarityInterface $similarity,
-        private readonly CentroidInitializerInterface $initializer,
+        private readonly CentroidInitializerInterface $initializer = new RandomCentroidInitializer(),
         private readonly int $maxIterations = 100,
     ) {
     }
