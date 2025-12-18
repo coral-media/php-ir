@@ -19,7 +19,6 @@
     }
   ],
   "type": "library",
-  "version": "0.0.1",
   "require": {
     "php": ">=8.2",
     "ext-json": "*",
