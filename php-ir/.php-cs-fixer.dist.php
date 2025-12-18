@@ -15,6 +15,7 @@ EOF;
 return (new PhpCsFixer\Config())
     ->setUsingCache(false)
     ->setRiskyAllowed(true)
+    ->setParallelConfig(PhpCsFixer\Runner\Parallel\ParallelConfigFactory::detect())
     ->setRules([
         '@PSR12' => true,
         'concat_space' => ['spacing' => 'one'],
