@@ -24,17 +24,29 @@ final class CosineSimilarity implements SimilarityInterface
             );
         }
 
+        $valuesA = $a->toArray();
+        $valuesB = $b->toArray();
+
+        // Choose smaller set for dot-product iteration
+        if (\count($valuesA) > \count($valuesB)) {
+            [$valuesA, $valuesB] = [$valuesB, $valuesA];
+            [$a, $b] = [$b, $a];
+        }
+
         $dotProduct = 0.0;
+
+        foreach ($valuesA as $index => $valueA) {
+            $dotProduct += $valueA * $b->get($index);
+        }
+
         $normA = 0.0;
+        foreach ($a->toArray() as $value) {
+            $normA += $value * $value;
+        }
+
         $normB = 0.0;
-
-        for ($i = 0; $i < $a->dimension(); $i++) {
-            $va = $a->get($i);
-            $vb = $b->get($i);
-
-            $dotProduct += $va * $vb;
-            $normA += $va * $va;
-            $normB += $vb * $vb;
+        foreach ($b->toArray() as $value) {
+            $normB += $value * $value;
         }
 
         if (0.0 === $normA || 0.0 === $normB) {

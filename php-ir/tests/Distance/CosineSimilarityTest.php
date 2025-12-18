@@ -13,6 +13,7 @@ namespace CoralMedia\PhpIr\Tests\Distance;
 
 use CoralMedia\PhpIr\Distance\CosineSimilarity;
 use CoralMedia\PhpIr\Vector\DenseVector;
+use CoralMedia\PhpIr\Vector\SparseVector;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
@@ -33,6 +34,20 @@ final class CosineSimilarityTest extends TestCase
         $cosine = new CosineSimilarity();
 
         $this->assertSame(0.0, $cosine->similarity($a, $b));
+    }
+
+    public function testSparseVectors(): void
+    {
+        $a = new SparseVector([1 => 1.0, 3 => 2.0], 5);
+        $b = new SparseVector([1 => 2.0, 4 => 1.0], 5);
+
+        $cosine = new CosineSimilarity();
+
+        $this->assertEqualsWithDelta(
+            0.4,
+            $cosine->similarity($a, $b),
+            1e-10,
+        );
     }
 
     public function testKnownExample(): void
