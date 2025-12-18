@@ -20,8 +20,9 @@ use InvalidArgumentException;
 final readonly class KMeans
 {
     public function __construct(
-        private SimilarityInterface $similarity,
-        private int                 $maxIterations = 100,
+        private readonly SimilarityInterface $similarity,
+        private readonly CentroidInitializerInterface $initializer,
+        private readonly int $maxIterations = 100,
     ) {
     }
 
@@ -37,10 +38,7 @@ final readonly class KMeans
         shuffle($keys);
 
         // 1. Initialize centroids
-        $centroids = [];
-        for ($i = 0; $i < $k; $i++) {
-            $centroids[$i] = $collection->get($keys[$i]);
-        }
+        $centroids = $this->initializer->initialize($collection, $k);
 
         $assignments = [];
         $normalizer = new L2Normalizer();

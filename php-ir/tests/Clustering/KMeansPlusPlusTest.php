@@ -11,17 +11,20 @@ declare(strict_types=1);
 
 namespace CoralMedia\PhpIr\Tests\Clustering;
 
+use CoralMedia\PhpIr\Clustering\KMeans;
 use CoralMedia\PhpIr\Clustering\KMeansPlusPlusInitializer;
 use CoralMedia\PhpIr\Collection\VectorCollection;
-use CoralMedia\PhpIr\Clustering\KMeans;
 use CoralMedia\PhpIr\Distance\CosineSimilarity;
 use CoralMedia\PhpIr\Vector\DenseVector;
 use PHPUnit\Framework\TestCase;
 
-final class KMeansTest extends TestCase
+final class KMeansPlusPlusTest extends TestCase
 {
-    public function testClustersSimpleData(): void
+    public function testClustersSimpleDataWithKMeansPlusPlus(): void
     {
+        // Ensure deterministic centroid selection
+        mt_srand(42);
+
         $collection = new VectorCollection([
             'a' => new DenseVector([1, 0]),
             'b' => new DenseVector([0.9, 0.1]),
@@ -29,10 +32,10 @@ final class KMeansTest extends TestCase
             'd' => new DenseVector([0.1, 0.9]),
         ]);
 
-        $cosineSimilarity = new CosineSimilarity();
-        $initializer = new KMeansPlusPlusInitializer($cosineSimilarity);
+        $similarity = new CosineSimilarity();
+        $initializer = new KMeansPlusPlusInitializer($similarity);
 
-        $kMeans = new KMeans($cosineSimilarity, $initializer, 20);
+        $kMeans = new KMeans($similarity, $initializer, 20);
         $result = $kMeans->cluster($collection, 2);
 
         $this->assertCount(2, $result->assignments);
