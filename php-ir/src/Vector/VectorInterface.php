@@ -28,6 +28,8 @@ interface VectorInterface
     /**
      * Returns the vector as a numeric array.
      *
+     * @return array<int, float>
+     *
      * Dense implementations return all values.
      * Sparse implementations may return only non-zero values.
      */
