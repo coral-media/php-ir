@@ -29,7 +29,7 @@ Thumbs.db
 ########################################
 # PHPUnit
 ########################################
-phpunit.result.cache
+**/*phpunit.result.cache
 
 ########################################
 # Zephir / Native Extensions
