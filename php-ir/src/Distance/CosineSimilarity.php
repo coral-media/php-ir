@@ -2,6 +2,13 @@
 
 declare(strict_types=1);
 
+/*
+ * (c) Rafael Ernesto Espinosa Santiesteban <rernesto.espinosa@gmail.com>
+ *
+ * This source file is subject to the license that is bundled
+ * with this source code in the file LICENSE.
+ */
+
 namespace CoralMedia\PhpIr\Distance;
 
 use CoralMedia\PhpIr\Vector\VectorInterface;
@@ -13,7 +20,7 @@ final class CosineSimilarity implements SimilarityInterface
     {
         if ($a->dimension() !== $b->dimension()) {
             throw new InvalidArgumentException(
-                'Vectors must have the same dimension to compute cosine similarity.'
+                'Vectors must have the same dimension to compute cosine similarity.',
             );
         }
 
@@ -30,7 +37,7 @@ final class CosineSimilarity implements SimilarityInterface
             $normB += $vb * $vb;
         }
 
-        if ($normA === 0.0 || $normB === 0.0) {
+        if (0.0 === $normA || 0.0 === $normB) {
             return 0.0;
         }
 
