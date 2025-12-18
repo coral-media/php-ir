@@ -30,6 +30,7 @@ final readonly class SimilaritySearch
         VectorInterface $query,
         VectorCollectionInterface $corpus,
         int $topK = 10,
+        ?SearchFilter $filter = null,
     ): array {
         if ($topK <= 0) {
             throw new InvalidArgumentException('topK must be greater than zero.');
@@ -44,10 +45,17 @@ final readonly class SimilaritySearch
         $results = [];
 
         foreach ($corpus as $key => $vector) {
-            $results[] = new SearchResult(
-                $key,
-                $this->similarity->similarity($query, $vector),
-            );
+            if (null !== $filter && \in_array($key, $filter->excludeKeys, true)) {
+                continue;
+            }
+
+            $score = $this->similarity->similarity($query, $vector);
+
+            if (null !== $filter && null !== $filter->minScore && $score < $filter->minScore) {
+                continue;
+            }
+
+            $results[] = new SearchResult($key, $score);
         }
 
         usort(
@@ -56,10 +64,6 @@ final readonly class SimilaritySearch
                 $b->score <=> $a->score,
         );
 
-        if (\count($results) > $topK) {
-            $results = \array_slice($results, 0, $topK);
-        }
-
-        return $results;
+        return \array_slice($results, 0, $topK);
     }
 }
