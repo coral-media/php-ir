@@ -9,7 +9,7 @@ declare(strict_types=1);
  * with this source code in the file LICENSE.
  */
 
-namespace CoralMedia\PhpIr\Tests\Feature;
+namespace CoralMedia\PhpIr\Tests\Feature\Tokenizer;
 
 use CoralMedia\PhpIr\Feature\Tokenizer\WhitespaceTokenizer;
 use PHPUnit\Framework\TestCase;
