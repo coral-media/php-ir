@@ -1,51 +1,70 @@
 # coral-media/php-ir
 
-A focused PHP library implementing classical Information Retrieval algorithms
-based on the Stanford IR book 
+A focused PHP library implementing classical **Information Retrieval (IR)**
+algorithms based on the Stanford IR book  
 [Introduction to Information Retrieval](https://nlp.stanford.edu/IR-book/html/htmledition/irbook.html).
+
+The goal of this project is to provide a **correct, deterministic, and
+explainable IR core** suitable for search, clustering, and recommendation
+systems.
+
+---
 
 ## License
 MIT
 
+---
+
 ## Scope
-- Vector space model
+
+- Vector space model (dense and sparse vectors)
 - Similarity measures (cosine, euclidean)
-- TF / IDF / TF-IDF weighting
-- Clustering (K-Means, variants)
+- Term weighting:
+    - Term Frequency (TF)
+    - Inverse Document Frequency (IDF)
+    - TF-IDF
+    - BM25 (probabilistic ranking)
+- Clustering (K-Means, K-Means++)
 - Deterministic, explainable algorithms
 
+---
+
 ## Non-Goals
+
 - NLP pipelines
 - Transformers / embeddings
+- Semantic vector databases
 - Dataset abstractions
 - Framework integrations
 
+This library intentionally focuses on **classical IR**, not modern NLP.
+
+---
+
 ## Philosophy
+
 This library favors:
+
 - Mathematical correctness
-- Explicit abstractions
+- Explicit, inspectable abstractions
 - Deterministic behavior
-- Native acceleration via Zephir (optional)
+- Minimal hidden state
+- Native acceleration via Zephir (optional, future-facing)
+
+---
+
+## API Stability
+
+New functionality will be added in a backward-compatible manner.
+
+---
 
 ## Releasing
 
-Versions are bumped using:
+Project versions are tracked using a `.version` file and Git tags.
 
-    ./scripts/bump-version.sh
-    git commit -am "chore: bump version"
+To bump the version:
 
-After committing the bump, create and push a tag:
-
-    git tag vX.Y.Z
-    git push origin main --tags
-
-### Git Hooks (Optional)
-
-This repository provides optional Git hooks to help enforce
-versioning and release discipline.
-
-To enable them locally:
-
-    ./scripts/install-hooks.sh
-
-Hooks are opt-in and not required to contribute.
+```bash
+./scripts/bump-version.sh {major|minor|patch}
+git commit -am "chore(release): bump version"
