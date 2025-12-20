@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["collection_id", "language", "strategy", "documents"],
+  "properties": {
+    "collection_id": { "type": "string" },
+    "language": { "type": "string" },
+    "strategy": {
+      "type": "string",
+      "enum": ["raw", "binary"]
+    },
+    "documents": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "object",
+        "minProperties": 1,
+        "additionalProperties": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    }
+  }
+}

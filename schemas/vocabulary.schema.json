@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["collection_id", "language", "term_count", "terms"],
+  "properties": {
+    "collection_id": { "type": "string" },
+    "language": { "type": "string" },
+    "term_count": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "terms": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "object",
+        "required": ["index", "document_frequency"],
+        "properties": {
+          "index": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "document_frequency": {
+            "type": "integer",
+            "minimum": 1
+          }
+        }
+      }
+    }
+  }
+}
