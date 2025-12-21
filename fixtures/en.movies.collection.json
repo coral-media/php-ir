@@ -1,0 +1,81 @@
+{
+  "schema": "php-ir.document-collection@1.0",
+  "meta": {
+    "domain": "movies",
+    "language": "en",
+    "source": "curated",
+    "document_count": 10
+  },
+  "documents": [
+    {
+      "id": "the_godfather",
+      "fields": {
+        "title": "The Godfather",
+        "description": "An aging patriarch of an organized crime dynasty transfers control of his empire to his reluctant son."
+      }
+    },
+    {
+      "id": "the_godfather_part_ii",
+      "fields": {
+        "title": "The Godfather Part II",
+        "description": "The early life and career of Vito Corleone in 1920s New York is portrayed while his son expands the family crime business."
+      }
+    },
+    {
+      "id": "pulp_fiction",
+      "fields": {
+        "title": "Pulp Fiction",
+        "description": "The lives of two mob hitmen, a boxer, a gangster's wife, and a pair of diner bandits intertwine in tales of violence."
+      }
+    },
+    {
+      "id": "the_dark_knight",
+      "fields": {
+        "title": "The Dark Knight",
+        "description": "Batman faces a criminal mastermind who seeks to undermine Gotham through chaos and psychological manipulation."
+      }
+    },
+    {
+      "id": "se7en",
+      "fields": {
+        "title": "Se7en",
+        "description": "Two detectives hunt a serial killer who uses the seven deadly sins as the basis for his murders."
+      }
+    },
+    {
+      "id": "inception",
+      "fields": {
+        "title": "Inception",
+        "description": "A skilled thief leads a team into the subconscious of their targets to steal or implant ideas through shared dreams."
+      }
+    },
+    {
+      "id": "interstellar",
+      "fields": {
+        "title": "Interstellar",
+        "description": "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival."
+      }
+    },
+    {
+      "id": "the_matrix",
+      "fields": {
+        "title": "The Matrix",
+        "description": "A hacker discovers the reality he lives in is a simulated construct and joins a rebellion against its controllers."
+      }
+    },
+    {
+      "id": "the_lord_of_the_rings_fellowship",
+      "fields": {
+        "title": "The Lord of the Rings: The Fellowship of the Ring",
+        "description": "A meek hobbit sets out on a journey to destroy a powerful ring and save Middle-earth from darkness."
+      }
+    },
+    {
+      "id": "titanic",
+      "fields": {
+        "title": "Titanic",
+        "description": "A romance develops aboard a doomed ocean liner between two passengers from different social classes."
+      }
+    }
+  ]
+}
