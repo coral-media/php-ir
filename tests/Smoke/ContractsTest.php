@@ -13,6 +13,7 @@ namespace CoralMedia\PhpIr\Tests\Smoke;
 
 use CoralMedia\PhpIr\Clustering\CentroidInitializerInterface;
 use CoralMedia\PhpIr\Collection\VectorCollectionInterface;
+use CoralMedia\PhpIr\Feature\Normalization\TextNormalizerInterface;
 use CoralMedia\PhpIr\Feature\TermFrequency\TermFrequencyExtractorInterface;
 use CoralMedia\PhpIr\Feature\Tokenizer\TokenizerInterface;
 use CoralMedia\PhpIr\Feature\Vocabulary\VocabularyInterface;
@@ -35,5 +36,6 @@ final class ContractsTest extends TestCase
         $this->assertTrue(interface_exists(VocabularyInterface::class));
         $this->assertTrue(interface_exists(VectorNormalizerInterface::class));
         $this->assertTrue(interface_exists(VectorizerInterface::class));
+        $this->assertTrue(interface_exists(TextNormalizerInterface::class));
     }
 }
