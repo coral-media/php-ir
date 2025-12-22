@@ -1,5 +1,14 @@
 # Changelog
 
+## [v0.5.4](https://github.com/coral-media/php-ir/releases/tag/v0.5.4)
+
+- [8fe535f](https://github.com/coral-media/php-ir/commit/8fe535f89de9051d8aedf5da0c02729ec65b8741) chore(release): bump version to 0.5.4
+- [dfe0207](https://github.com/coral-media/php-ir/commit/dfe0207aac55221c5b8bd5aa5a628933c56b63f8) feat(feature): add stemming normalization with IR stability invariants
+- [2635ba1](https://github.com/coral-media/php-ir/commit/2635ba18874ccfd3e84e68771dcd7f1a27f4f0e3) feat(feature): add stemming primitives and adapters
+- [d3b561b](https://github.com/coral-media/php-ir/commit/d3b561bbfef467e85928b089d7e8f75906061267) chore(changelog): fixes links in output file
+- [cf4fb44](https://github.com/coral-media/php-ir/commit/cf4fb44f49d4ca72c6a45be29a967b65abd04e30) chore(changelog): github friendly links for commits and release tags
+- [2b113a6](https://github.com/coral-media/php-ir/commit/2b113a6fe734c2d65cfb15f760f3a7549a858210) chore(changelog): adds changelog generator and first changelog file
+
 ## [v0.5.3](https://github.com/coral-media/php-ir/releases/tag/v0.5.3)
 
 - [f608643](https://github.com/coral-media/php-ir/commit/f6086435c3994a5e2acfd71584c1af7158aa6d40) chore(release): bump version to 0.5.3
