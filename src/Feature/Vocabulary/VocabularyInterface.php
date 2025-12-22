@@ -11,6 +11,8 @@ declare(strict_types=1);
 
 namespace CoralMedia\PhpIr\Feature\Vocabulary;
 
+use InvalidArgumentException;
+
 interface VocabularyInterface
 {
     /**
@@ -29,4 +31,13 @@ interface VocabularyInterface
      * @return list<string>
      */
     public function terms(): array;
+
+    /**
+     * Return the term corresponding to a given vocabulary index.
+     *
+     * @param int $index Zero-based vocabulary index
+     * @return string The term at the given index
+     * @throws InvalidArgumentException If the index is out of bounds
+     */
+    public function termAt(int $index): string;
 }

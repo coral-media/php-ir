@@ -11,6 +11,8 @@ declare(strict_types=1);
 
 namespace CoralMedia\PhpIr\Feature\Vocabulary;
 
+use InvalidArgumentException;
+
 final class VocabularyBuilder implements VocabularyInterface
 {
     /** @var array<string,int> */
@@ -52,6 +54,19 @@ final class VocabularyBuilder implements VocabularyInterface
     public function terms(): array
     {
         return array_keys($this->documentFrequencies);
+    }
+
+    public function termAt(int $index): string
+    {
+        $terms = $this->terms();
+
+        if (!isset($terms[$index])) {
+            throw new InvalidArgumentException(
+                "No term at vocabulary index {$index}",
+            );
+        }
+
+        return $terms[$index];
     }
 
     /**
