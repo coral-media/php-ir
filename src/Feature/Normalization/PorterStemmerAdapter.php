@@ -11,8 +11,6 @@ declare(strict_types=1);
 
 namespace CoralMedia\PhpIr\Feature\Normalization;
 
-use InvalidArgumentException;
-
 final class PorterStemmerAdapter implements StemmerInterface
 {
     /**
