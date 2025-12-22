@@ -1,50 +1,50 @@
 # Changelog
 
-## [v0.5.3](https://github.com/coral-media/php-ir.git/releases/tag/v0.5.3)
+## [v0.5.3](https://github.com/coral-media/php-ir/releases/tag/v0.5.3)
 
-- [f608643](https://github.com/coral-media/php-ir.git/commit/f608643) chore(release): bump version to 0.5.3
-- [79654cd](https://github.com/coral-media/php-ir.git/commit/79654cd) feat(clustering): add cluster concept extraction from centroids
-- [da5699d](https://github.com/coral-media/php-ir.git/commit/da5699d) fix(clustering): normalize centroids in spherical k-means++ initializer
+- [f608643](https://github.com/coral-media/php-ir/commit/f6086435c3994a5e2acfd71584c1af7158aa6d40) chore(release): bump version to 0.5.3
+- [79654cd](https://github.com/coral-media/php-ir/commit/79654cd14657e015bcdbbebaf9baea633bc96339) feat(clustering): add cluster concept extraction from centroids
+- [da5699d](https://github.com/coral-media/php-ir/commit/da5699d99cf64dfddbb815bbcfb347b86f17a7ae) fix(clustering): normalize centroids in spherical k-means++ initializer
 
-## [v0.5.2](https://github.com/coral-media/php-ir.git/releases/tag/v0.5.2)
+## [v0.5.2](https://github.com/coral-media/php-ir/releases/tag/v0.5.2)
 
-- [bb04868](https://github.com/coral-media/php-ir.git/commit/bb04868) chore(release): bump version to 0.5.2
-- [491da46](https://github.com/coral-media/php-ir.git/commit/491da46) feat(clustering): add spherical k-means++ initializer
+- [bb04868](https://github.com/coral-media/php-ir/commit/bb048689821c328f2cdc1c8d5ec2362f58ab08d7) chore(release): bump version to 0.5.2
+- [491da46](https://github.com/coral-media/php-ir/commit/491da468307256bbc95e811d9ebd9be238cf91cf) feat(clustering): add spherical k-means++ initializer
 
-## [v0.5.1](https://github.com/coral-media/php-ir.git/releases/tag/v0.5.1)
+## [v0.5.1](https://github.com/coral-media/php-ir/releases/tag/v0.5.1)
 
-- [fc21a33](https://github.com/coral-media/php-ir.git/commit/fc21a33) chore(release): bump version to 0.5.1
-- [59eb9b8](https://github.com/coral-media/php-ir.git/commit/59eb9b8) test(smoke): add end-to-end spherical dot-product TF-IDF search
+- [fc21a33](https://github.com/coral-media/php-ir/commit/fc21a33f6bf3e74349a3b5fbd6ec1ed79e7da895) chore(release): bump version to 0.5.1
+- [59eb9b8](https://github.com/coral-media/php-ir/commit/59eb9b8b07f89c9983f15563c682682490ea4c44) test(smoke): add end-to-end spherical dot-product TF-IDF search
 
-## [v0.5.0](https://github.com/coral-media/php-ir.git/releases/tag/v0.5.0)
+## [v0.5.0](https://github.com/coral-media/php-ir/releases/tag/v0.5.0)
 
-- [ec1ce45](https://github.com/coral-media/php-ir.git/commit/ec1ce45) chore(release): bump version to 0.5.0
-- [e5f91b6](https://github.com/coral-media/php-ir.git/commit/e5f91b6) feat(clustering): add spherical k-means support
-- [809941a](https://github.com/coral-media/php-ir.git/commit/809941a) feat(distance): add euclidean similarity metric
+- [ec1ce45](https://github.com/coral-media/php-ir/commit/ec1ce4538f3a26ed62e213b6c8776856fb67339f) chore(release): bump version to 0.5.0
+- [e5f91b6](https://github.com/coral-media/php-ir/commit/e5f91b661feb2ffad90f274cf78ca6b4147e3313) feat(clustering): add spherical k-means support
+- [809941a](https://github.com/coral-media/php-ir/commit/809941a18f0e4da5f69f9b199949086c6f03dd1f) feat(distance): add euclidean similarity metric
 
-## [v0.4.1](https://github.com/coral-media/php-ir.git/releases/tag/v0.4.1)
+## [v0.4.1](https://github.com/coral-media/php-ir/releases/tag/v0.4.1)
 
-- [7aa43ec](https://github.com/coral-media/php-ir.git/commit/7aa43ec) chore(release): bump version to 0.4.1
-- [2c5a85e](https://github.com/coral-media/php-ir.git/commit/2c5a85e) test(smoke): add real movie collection fixture and end-to-end search tests
-- [d301708](https://github.com/coral-media/php-ir.git/commit/d301708) feat(feature): add text normalization primitives
+- [7aa43ec](https://github.com/coral-media/php-ir/commit/7aa43ec2983b28db796d8fc57dad728ac8218895) chore(release): bump version to 0.4.1
+- [2c5a85e](https://github.com/coral-media/php-ir/commit/2c5a85eff1cfa18de8a225b8a9fe87eeb1a675ea) test(smoke): add real movie collection fixture and end-to-end search tests
+- [d301708](https://github.com/coral-media/php-ir/commit/d3017080ac70a02fa43b2a261ddf35a6582603aa) feat(feature): add text normalization primitives
 
-## [v0.4.0](https://github.com/coral-media/php-ir.git/releases/tag/v0.4.0)
+## [v0.4.0](https://github.com/coral-media/php-ir/releases/tag/v0.4.0)
 
-- [a8a306a](https://github.com/coral-media/php-ir.git/commit/a8a306a) chore(release): bump version to 0.4.0
-- [3f67705](https://github.com/coral-media/php-ir.git/commit/3f67705) feat(serialization): add typed serializers for IR artifacts
+- [a8a306a](https://github.com/coral-media/php-ir/commit/a8a306a1dea8a151a4b890d5a91c54bb23b26e2f) chore(release): bump version to 0.4.0
+- [3f67705](https://github.com/coral-media/php-ir/commit/3f677055013fac5182801b67605e021e0f18480a) feat(serialization): add typed serializers for IR artifacts
 
-## [v0.3.0](https://github.com/coral-media/php-ir.git/releases/tag/v0.3.0)
+## [v0.3.0](https://github.com/coral-media/php-ir/releases/tag/v0.3.0)
 
-- [803a6cc](https://github.com/coral-media/php-ir.git/commit/803a6cc) chore(release): bump version to 0.3.0
-- [f4f9773](https://github.com/coral-media/php-ir.git/commit/f4f9773) feat(processing): add minimal processing layer with wiring tests
-- [f19bb3a](https://github.com/coral-media/php-ir.git/commit/f19bb3a) docs: update README with BM25, scope, and API stability
-- [bfc8e42](https://github.com/coral-media/php-ir.git/commit/bfc8e42) feat(weighting): add BM25 probabilistic ranking model
+- [803a6cc](https://github.com/coral-media/php-ir/commit/803a6cc6ca7739945645bf567df96d10dafc7c02) chore(release): bump version to 0.3.0
+- [f4f9773](https://github.com/coral-media/php-ir/commit/f4f9773bee875511ea9ae1d6fc48271bc381d369) feat(processing): add minimal processing layer with wiring tests
+- [f19bb3a](https://github.com/coral-media/php-ir/commit/f19bb3a0b178d192eea4b4d54936c6b012e36287) docs: update README with BM25, scope, and API stability
+- [bfc8e42](https://github.com/coral-media/php-ir/commit/bfc8e42c4855ff2745c16505a7fcb7900221b980) feat(weighting): add BM25 probabilistic ranking model
 
-## [v0.2.0](https://github.com/coral-media/php-ir.git/releases/tag/v0.2.0)
+## [v0.2.0](https://github.com/coral-media/php-ir/releases/tag/v0.2.0)
 
-- [f2d7d77](https://github.com/coral-media/php-ir.git/commit/f2d7d77) test(smoke): add end-to-end TF-IDF search functional test
-- [a6005a8](https://github.com/coral-media/php-ir.git/commit/a6005a8) feat(vector): add sparse vectorizer from term frequencies
-- [844e5d0](https://github.com/coral-media/php-ir.git/commit/844e5d0) feat(feature): add vocabulary builder for corpus statistics
-- [5761e10](https://github.com/coral-media/php-ir.git/commit/5761e10) feat(feature): add term frequency extractors
-- [107c6d7](https://github.com/coral-media/php-ir.git/commit/107c6d7) feat(feature): add tokenizer abstractions for term extraction
+- [f2d7d77](https://github.com/coral-media/php-ir/commit/f2d7d776c1f5cf078d811d21c503190e842b8594) test(smoke): add end-to-end TF-IDF search functional test
+- [a6005a8](https://github.com/coral-media/php-ir/commit/a6005a87d77c39f1e78c8b64dd1b7ef63b66fa39) feat(vector): add sparse vectorizer from term frequencies
+- [844e5d0](https://github.com/coral-media/php-ir/commit/844e5d0ce6c01ae4ad425cbfca387b2094fa2b96) feat(feature): add vocabulary builder for corpus statistics
+- [5761e10](https://github.com/coral-media/php-ir/commit/5761e105a82c31e1e11b3f85c1e73b4a8d4a8a89) feat(feature): add term frequency extractors
+- [107c6d7](https://github.com/coral-media/php-ir/commit/107c6d71eaeb6321559b6ce38ec8e6b2d1aeede7) feat(feature): add tokenizer abstractions for term extraction
 
