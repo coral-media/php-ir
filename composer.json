@@ -18,6 +18,7 @@
       "email": "rernesto.espinosa@gmail.com"
     }
   ],
+  "license": "MIT",
   "type": "library",
   "require": {
     "php": ">=8.2",
@@ -31,7 +32,9 @@
     "friendsofphp/php-cs-fixer": "^3.92",
     "phpstan/phpstan": "^2.1"
   },
-  "license": "MIT",
+  "suggest": {
+    "wamania/php-stemmer": "Required for stemming support (Porter/Snowball)"
+  },
   "autoload": {
     "psr-4": {
       "CoralMedia\\PhpIr\\": "src/"
