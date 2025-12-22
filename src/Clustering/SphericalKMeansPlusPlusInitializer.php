@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * (c) Rafael Ernesto Espinosa Santiesteban <rernesto.espinosa@gmail.com>
  *
@@ -11,13 +13,14 @@ namespace CoralMedia\PhpIr\Clustering;
 
 use CoralMedia\PhpIr\Collection\VectorCollectionInterface;
 use CoralMedia\PhpIr\Distance\SimilarityInterface;
+use CoralMedia\PhpIr\Normalization\L2Normalizer;
 use CoralMedia\PhpIr\Vector\VectorInterface;
 use InvalidArgumentException;
 
 final class SphericalKMeansPlusPlusInitializer implements CentroidInitializerInterface
 {
     public function __construct(
-        private SimilarityInterface $similarity,
+        private readonly SimilarityInterface $similarity,
     ) {
     }
 
@@ -33,10 +36,13 @@ final class SphericalKMeansPlusPlusInitializer implements CentroidInitializerInt
         }
 
         $vectors = iterator_to_array($collection);
+        $normalizer = new L2Normalizer();
 
-        // 1. Pick first centroid uniformly at random
+        // 1. Pick first centroid uniformly at random (AND NORMALIZE)
         $centroids = [];
-        $centroids[] = $vectors[array_rand($vectors)];
+        $centroids[] = $normalizer->normalize(
+            $vectors[array_rand($vectors)],
+        );
 
         // 2. Pick remaining centroids
         while (\count($centroids) < $k) {
@@ -47,11 +53,12 @@ final class SphericalKMeansPlusPlusInitializer implements CentroidInitializerInt
                 $minDistance = INF;
 
                 foreach ($centroids as $centroid) {
-                    $similarity = $this->similarity
-                        ->similarity($vector, $centroid)
-                    ;
+                    $similarity = $this->similarity->similarity(
+                        $vector,
+                        $centroid,
+                    );
 
-                    // Angular distance
+                    // Angular distance (spherical)
                     $distance = 1.0 - $similarity;
                     $minDistance = min($minDistance, $distance);
                 }
@@ -60,7 +67,7 @@ final class SphericalKMeansPlusPlusInitializer implements CentroidInitializerInt
                 $total += $minDistance;
             }
 
-            // Numerical safety fallback
+            // Numerical fallback
             if (0.0 === $total) {
                 break;
             }
@@ -71,8 +78,11 @@ final class SphericalKMeansPlusPlusInitializer implements CentroidInitializerInt
 
             foreach ($distances as $key => $distance) {
                 $running += $distance;
+
                 if ($running >= $threshold) {
-                    $centroids[] = $vectors[$key];
+                    $centroids[] = $normalizer->normalize(
+                        $vectors[$key],
+                    );
                     break;
                 }
             }
