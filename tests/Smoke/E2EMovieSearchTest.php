@@ -27,7 +27,7 @@ use CoralMedia\PhpIr\Weighting\Bm25;
 use CoralMedia\PhpIr\Weighting\TfIdfCorpusBuilder;
 use PHPUnit\Framework\TestCase;
 
-final class EndToEndMovieSearchTest extends TestCase
+final class E2EMovieSearchTest extends TestCase
 {
     public function testSearchOverMovieCollectionJson(): void
     {

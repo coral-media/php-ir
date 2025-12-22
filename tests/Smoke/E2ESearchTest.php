@@ -23,7 +23,7 @@ use CoralMedia\PhpIr\Vector\Vectorizer\SparseVectorizer;
 use CoralMedia\PhpIr\Weighting\TfIdfCorpusBuilder;
 use PHPUnit\Framework\TestCase;
 
-final class EndToEndSearchTest extends TestCase
+final class E2ESearchTest extends TestCase
 {
     public function testFullTextSearchPipeline(): void
     {
