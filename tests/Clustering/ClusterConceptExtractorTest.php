@@ -45,4 +45,53 @@ final class ClusterConceptExtractorTest extends TestCase
             $concepts['crime'],
         );
     }
+
+    public function testExtractsTopWeightedTermsFromCentroid(): void
+    {
+        // -------------------------------------------------
+        // Vocabulary (real implementation)
+        // -------------------------------------------------
+        $vocabulary = new VocabularyBuilder();
+
+        // Order matters: defines index → term mapping
+        $vocabulary->addDocument([
+            'crime'   => 1,
+            'mafia'   => 1,
+            'romance' => 1,
+            'family'  => 1,
+        ]);
+
+        // -------------------------------------------------
+        // Normalized centroid vector
+        // Indices must match vocabulary order
+        // -------------------------------------------------
+        $centroid = new DenseVector([
+            0.1, // crime
+            0.7, // mafia
+            0.0, // romance
+            0.2, // family
+        ]);
+
+        // -------------------------------------------------
+        // Extraction
+        // -------------------------------------------------
+        $extractor = new ClusterConceptExtractor();
+
+        $concepts = $extractor->extract(
+            centroid: $centroid,
+            vocabulary: $vocabulary,
+            topK: 2,
+        );
+
+        // -------------------------------------------------
+        // Assertions (minimal invariants)
+        // -------------------------------------------------
+        $this->assertSame(
+            ['mafia', 'family'],
+            array_keys($concepts),
+        );
+
+        $this->assertEqualsWithDelta(0.7, $concepts['mafia'], 1e-6);
+        $this->assertEqualsWithDelta(0.2, $concepts['family'], 1e-6);
+    }
 }
