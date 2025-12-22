@@ -27,6 +27,22 @@ final class CosineSimilarityTest extends TestCase
         $this->assertSame(1.0, $cosine->similarity($v, $v));
     }
 
+    public function testSphericalCosineUsesDotProduct(): void
+    {
+        // Unit-length vectors
+        $a = new DenseVector([1.0, 0.0]);
+        $b = new DenseVector([0.6, 0.8]); // already normalized
+
+        $cosine = new CosineSimilarity(normalize: false);
+
+        // Dot product = 1*0.6 + 0*0.8 = 0.6
+        $this->assertEqualsWithDelta(
+            0.6,
+            $cosine->similarity($a, $b),
+            1e-10,
+        );
+    }
+
     public function testOrthogonalVectors(): void
     {
         $a = new DenseVector([1, 0]);

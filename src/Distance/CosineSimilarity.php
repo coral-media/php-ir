@@ -16,6 +16,11 @@ use InvalidArgumentException;
 
 final class CosineSimilarity implements SimilarityInterface
 {
+    public function __construct(
+        private readonly bool $normalize = true,
+    ) {
+    }
+
     public function similarity(VectorInterface $a, VectorInterface $b): float
     {
         if ($a->dimension() !== $b->dimension()) {
@@ -37,6 +42,11 @@ final class CosineSimilarity implements SimilarityInterface
 
         foreach ($valuesA as $index => $valueA) {
             $dotProduct += $valueA * $b->get($index);
+        }
+
+        // Fast path: spherical / already normalized
+        if (false === $this->normalize) {
+            return $dotProduct;
         }
 
         $normA = 0.0;

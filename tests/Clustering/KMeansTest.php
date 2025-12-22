@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace CoralMedia\PhpIr\Tests\Clustering;
 
+use CoralMedia\PhpIr\Clustering\MeanCentroidUpdater;
 use CoralMedia\PhpIr\Clustering\RandomCentroidInitializer;
 use CoralMedia\PhpIr\Collection\VectorCollection;
 use CoralMedia\PhpIr\Clustering\KMeans;
@@ -32,7 +33,7 @@ final class KMeansTest extends TestCase
         $cosineSimilarity = new CosineSimilarity();
         $initializer = new RandomCentroidInitializer();
 
-        $kMeans = new KMeans($cosineSimilarity, $initializer, 20);
+        $kMeans = new KMeans($cosineSimilarity, $initializer, new MeanCentroidUpdater(), 20);
         $result = $kMeans->cluster($collection, 2);
 
         $this->assertCount(2, $result->assignments);

@@ -13,6 +13,7 @@ namespace CoralMedia\PhpIr\Tests\Clustering;
 
 use CoralMedia\PhpIr\Clustering\KMeans;
 use CoralMedia\PhpIr\Clustering\KMeansPlusPlusInitializer;
+use CoralMedia\PhpIr\Clustering\MeanCentroidUpdater;
 use CoralMedia\PhpIr\Collection\VectorCollection;
 use CoralMedia\PhpIr\Distance\CosineSimilarity;
 use CoralMedia\PhpIr\Vector\DenseVector;
@@ -35,7 +36,7 @@ final class KMeansPlusPlusTest extends TestCase
         $similarity = new CosineSimilarity();
         $initializer = new KMeansPlusPlusInitializer($similarity);
 
-        $kMeans = new KMeans($similarity, $initializer, 20);
+        $kMeans = new KMeans($similarity, $initializer, new MeanCentroidUpdater(), 20);
         $result = $kMeans->cluster($collection, 2);
 
         $this->assertCount(2, $result->assignments);
