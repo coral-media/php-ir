@@ -1,5 +1,14 @@
 # Changelog
 
+## [v0.6.0](https://github.com/coral-media/php-ir/releases/tag/v0.6.0)
+
+- [83bb757](https://github.com/coral-media/php-ir/commit/83bb7576ed609a54b4f65ee77e99fae673cb1fec) chore(release): bump version to 0.6.0
+- [962cbe4](https://github.com/coral-media/php-ir/commit/962cbe403ec954fc2737f06e0f4da48cdcfe8766) feat(language): introduce language-specific stopword filtering
+- [760629b](https://github.com/coral-media/php-ir/commit/760629b21e11308ba0ae24f79ecd7e427db36ff8) chore(quality): internal cleanup following PHPMD analysis
+- [0e3af57](https://github.com/coral-media/php-ir/commit/0e3af57402b0f88db6ef583f13b480a74ba7bc4f) chore(quality): add PHPMD quality tool and ruleset
+- [1c96c32](https://github.com/coral-media/php-ir/commit/1c96c327937be87b20467e2cac93b9c712974f26) test: add invariant test for cluster concept extraction
+- [e6b8c56](https://github.com/coral-media/php-ir/commit/e6b8c567892a0c561fc4523cc2f3e94905435733) docs(changelog): update for v0.5.4
+
 ## [v0.5.4](https://github.com/coral-media/php-ir/releases/tag/v0.5.4)
 
 - [8fe535f](https://github.com/coral-media/php-ir/commit/8fe535f89de9051d8aedf5da0c02729ec65b8741) chore(release): bump version to 0.5.4
