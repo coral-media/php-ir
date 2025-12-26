@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace CoralMedia\PhpIr\Collection;
 
+use ArrayIterator;
 use CoralMedia\PhpIr\Vector\VectorInterface;
 use InvalidArgumentException;
 use OutOfBoundsException;
@@ -37,7 +38,7 @@ final class VectorCollection implements VectorCollectionInterface
         $first = reset($vectors);
         $this->dimension = $first->dimension();
 
-        foreach ($vectors as $key => $vector) {
+        foreach ($vectors as $vector) {
             if ($vector->dimension() !== $this->dimension) {
                 throw new InvalidArgumentException(
                     'All vectors in a collection must share the same dimension.',
@@ -69,6 +70,6 @@ final class VectorCollection implements VectorCollectionInterface
 
     public function getIterator(): Traversable
     {
-        return new \ArrayIterator($this->vectors);
+        return new ArrayIterator($this->vectors);
     }
 }

@@ -85,7 +85,9 @@ final class Bm25
             $score = 0.0;
             $dl    = $documentLengths[$docId];
 
-            foreach ($queryTerms as $termIndex => $queryTf) {
+            $termIndexes = array_keys($queryTerms);
+
+            foreach ($termIndexes as $termIndex) {
                 if (!isset($terms[$termIndex])) {
                     continue;
                 }

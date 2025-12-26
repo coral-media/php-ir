@@ -32,7 +32,9 @@ final class SparseVector implements VectorInterface
             throw new InvalidArgumentException('Vector dimension must be greater than zero.');
         }
 
-        foreach ($values as $index => $value) {
+        $valuesIndexes = array_keys($values);
+
+        foreach ($valuesIndexes as $index) {
             if ($index < 0) {
                 throw new InvalidArgumentException(
                     'Sparse vector indices must be non-negative integers.',

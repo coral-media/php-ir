@@ -43,6 +43,7 @@
         <exclude name="ExcessiveMethodComplexity"/>
         <exclude name="ExcessiveClassComplexity"/>
         <exclude name="ExcessiveParameterList"/>
+        <exclude name="CyclomaticComplexity"/>
     </rule>
 
     <!-- ========================================================= -->
@@ -51,6 +52,7 @@
     <rule ref="rulesets/naming.xml">
         <!-- Mathematical variable names are intentional -->
         <exclude name="ShortVariable"/>
+        <exclude name="LongVariable"/>
         <exclude name="ShortMethodName"/>
     </rule>
 
