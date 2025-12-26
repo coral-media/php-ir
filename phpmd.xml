@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleset name="php-ir"
+         xmlns="http://pmd.sourceforge.net/ruleset/2.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0
+                             https://pmd.sourceforge.net/ruleset_2_0_0.xsd">
+
+    <description>
+        Conservative PHPMD ruleset for coral-media/php-ir.
+        Focused on maintainability and architectural hygiene,
+        tolerant of mathematical and algorithmic complexity.
+    </description>
+
+    <!-- ========================================================= -->
+    <!-- Clean Code                                                -->
+    <!-- ========================================================= -->
+    <rule ref="rulesets/cleancode.xml">
+        <!-- Common false positives in algorithmic code -->
+        <exclude name="BooleanArgumentFlag"/>
+        <exclude name="ElseExpression"/>
+        <exclude name="StaticAccess"/>
+    </rule>
+
+    <!-- ========================================================= -->
+    <!-- Design Rules                                              -->
+    <!-- ========================================================= -->
+    <rule ref="rulesets/design.xml">
+        <!-- Algorithms often have unavoidable coupling -->
+        <exclude name="CouplingBetweenObjects"/>
+
+        <!-- Library-style APIs may expose multiple methods -->
+        <exclude name="TooManyPublicMethods"/>
+
+        <!-- Value objects are often immutable by design -->
+        <exclude name="MutableStaticState"/>
+    </rule>
+
+    <!-- ========================================================= -->
+    <!-- Code Size                                                 -->
+    <!-- ========================================================= -->
+    <rule ref="rulesets/codesize.xml">
+        <!-- Numeric / IR algorithms naturally exceed these -->
+        <exclude name="ExcessiveMethodComplexity"/>
+        <exclude name="ExcessiveClassComplexity"/>
+        <exclude name="ExcessiveParameterList"/>
+    </rule>
+
+    <!-- ========================================================= -->
+    <!-- Naming                                                    -->
+    <!-- ========================================================= -->
+    <rule ref="rulesets/naming.xml">
+        <!-- Mathematical variable names are intentional -->
+        <exclude name="ShortVariable"/>
+        <exclude name="ShortMethodName"/>
+    </rule>
+
+    <!-- ========================================================= -->
+    <!-- Unused Code (IMPORTANT)                                   -->
+    <!-- ========================================================= -->
+    <rule ref="rulesets/unusedcode.xml"/>
+</ruleset>
