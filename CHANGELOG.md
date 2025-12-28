@@ -1,5 +1,12 @@
 # Changelog
 
+## [v0.6.1](https://github.com/coral-media/php-ir/releases/tag/v0.6.1)
+
+- [c494d3e](https://github.com/coral-media/php-ir/commit/c494d3eafd427c9a30dc5c56e2b64a54e4eadeb4) chore(release): bump version to 0.6.1
+- [ad968b5](https://github.com/coral-media/php-ir/commit/ad968b521d383cc54c5a9f3eabf1e8fee8e5788b) feat(clustering,fixtures): improve movie corpus descriptions and harden spherical median centroid
+- [9ce25ba](https://github.com/coral-media/php-ir/commit/9ce25bacab1dc841eff19776cc8199c5a50472c0) fix(clustering): rename factory class for PSR-4 compliance
+- [6642d34](https://github.com/coral-media/php-ir/commit/6642d34e9e6aff7e86aa1fbeed9e2d63832a96ea) docs(changelog): update for v0.6.0
+
 ## [v0.6.0](https://github.com/coral-media/php-ir/releases/tag/v0.6.0)
 
 - [83bb757](https://github.com/coral-media/php-ir/commit/83bb7576ed609a54b4f65ee77e99fae673cb1fec) chore(release): bump version to 0.6.0
