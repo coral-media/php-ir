@@ -9,18 +9,19 @@ declare(strict_types=1);
  * with this source code in the file LICENSE.
  */
 
-namespace CoralMedia\PhpIr\Clustering;
+namespace CoralMedia\PhpIr\Clustering\Initializer;
 
+use CoralMedia\PhpIr\Clustering\Centroid\CentroidInitializerInterface;
 use CoralMedia\PhpIr\Collection\VectorCollectionInterface;
 use CoralMedia\PhpIr\Distance\SimilarityInterface;
 use CoralMedia\PhpIr\Normalization\L2Normalizer;
 use CoralMedia\PhpIr\Vector\VectorInterface;
 use InvalidArgumentException;
 
-final class SphericalKMeansPlusPlusInitializer implements CentroidInitializerInterface
+final readonly class SphericalKMeansPlusPlusInitializer implements CentroidInitializerInterface
 {
     public function __construct(
-        private readonly SimilarityInterface $similarity,
+        private SimilarityInterface $similarity,
     ) {
     }
 

@@ -11,15 +11,15 @@ declare(strict_types=1);
 
 namespace CoralMedia\PhpIr\Tests\Smoke;
 
-use CoralMedia\PhpIr\Clustering\CentroidInitializerInterface;
+use CoralMedia\PhpIr\Clustering\Centroid\CentroidInitializerInterface;
 use CoralMedia\PhpIr\Collection\VectorCollectionInterface;
+use CoralMedia\PhpIr\Distance\SimilarityInterface;
 use CoralMedia\PhpIr\Feature\Normalization\TextNormalizerInterface;
 use CoralMedia\PhpIr\Feature\TermFrequency\TermFrequencyExtractorInterface;
 use CoralMedia\PhpIr\Feature\Tokenizer\TokenizerInterface;
 use CoralMedia\PhpIr\Feature\Vocabulary\VocabularyInterface;
 use CoralMedia\PhpIr\Normalization\VectorNormalizerInterface;
 use CoralMedia\PhpIr\Vector\VectorInterface;
-use CoralMedia\PhpIr\Distance\SimilarityInterface;
 use CoralMedia\PhpIr\Vector\Vectorizer\VectorizerInterface;
 use PHPUnit\Framework\TestCase;
 

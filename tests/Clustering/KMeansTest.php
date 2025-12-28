@@ -11,10 +11,10 @@ declare(strict_types=1);
 
 namespace CoralMedia\PhpIr\Tests\Clustering;
 
-use CoralMedia\PhpIr\Clustering\MeanCentroidUpdater;
-use CoralMedia\PhpIr\Clustering\RandomCentroidInitializer;
-use CoralMedia\PhpIr\Collection\VectorCollection;
+use CoralMedia\PhpIr\Clustering\Centroid\MeanCentroidUpdater;
+use CoralMedia\PhpIr\Clustering\Centroid\RandomCentroidInitializer;
 use CoralMedia\PhpIr\Clustering\KMeans;
+use CoralMedia\PhpIr\Collection\VectorCollection;
 use CoralMedia\PhpIr\Distance\CosineSimilarity;
 use CoralMedia\PhpIr\Vector\DenseVector;
 use PHPUnit\Framework\TestCase;

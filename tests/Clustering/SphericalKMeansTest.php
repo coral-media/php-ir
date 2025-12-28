@@ -11,9 +11,9 @@ declare(strict_types=1);
 
 namespace CoralMedia\PhpIr\Tests\Clustering;
 
+use CoralMedia\PhpIr\Clustering\Centroid\SphericalCentroidUpdater;
+use CoralMedia\PhpIr\Clustering\Initializer\KMeansPlusPlusInitializer;
 use CoralMedia\PhpIr\Clustering\KMeans;
-use CoralMedia\PhpIr\Clustering\KMeansPlusPlusInitializer;
-use CoralMedia\PhpIr\Clustering\SphericalCentroidUpdater;
 use CoralMedia\PhpIr\Collection\VectorCollection;
 use CoralMedia\PhpIr\Distance\CosineSimilarity;
 use CoralMedia\PhpIr\Normalization\L2Normalizer;

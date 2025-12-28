@@ -11,6 +11,8 @@ declare(strict_types=1);
 
 namespace CoralMedia\PhpIr\Clustering;
 
+use CoralMedia\PhpIr\Clustering\Centroid\CentroidInitializerInterface;
+use CoralMedia\PhpIr\Clustering\Centroid\CentroidUpdaterInterface;
 use CoralMedia\PhpIr\Collection\VectorCollectionInterface;
 use CoralMedia\PhpIr\Distance\SimilarityInterface;
 use InvalidArgumentException;

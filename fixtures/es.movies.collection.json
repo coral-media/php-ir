@@ -1,0 +1,81 @@
+{
+  "schema": "php-ir.document-collection@1.0",
+  "meta": {
+    "domain": "movies",
+    "language": "es",
+    "source": "curated",
+    "document_count": 10
+  },
+  "documents": [
+    {
+      "id": "the_godfather",
+      "fields": {
+        "title": "El Padrino",
+        "description": "El patriarca envejecido de una poderosa familia criminal transfiere el control de su imperio clandestino a su hijo menor, quien inicialmente se muestra reacio a asumir ese destino."
+      }
+    },
+    {
+      "id": "the_godfather_part_ii",
+      "fields": {
+        "title": "El Padrino Parte II",
+        "description": "La historia alterna entre los orígenes de Vito Corleone como inmigrante en Nueva York y la expansión del imperio criminal de su hijo Michael como nuevo líder de la familia."
+      }
+    },
+    {
+      "id": "pulp_fiction",
+      "fields": {
+        "title": "Pulp Fiction",
+        "description": "Varias historias entrelazadas siguen a sicarios, criminales y personajes marginales del mundo del crimen en Los Ángeles, explorando la violencia, el azar y la redención."
+      }
+    },
+    {
+      "id": "the_dark_knight",
+      "fields": {
+        "title": "El Caballero Oscuro",
+        "description": "Batman se enfrenta a un criminal caótico y despiadado que busca sumir a Gotham en el desorden psicológico y moral, poniendo a prueba los límites de la justicia."
+      }
+    },
+    {
+      "id": "se7en",
+      "fields": {
+        "title": "Se7en",
+        "description": "Dos detectives investigan una serie de asesinatos cometidos por un criminal que utiliza los siete pecados capitales como inspiración para sus crímenes."
+      }
+    },
+    {
+      "id": "inception",
+      "fields": {
+        "title": "El Origen",
+        "description": "Un ladrón especializado en infiltrarse en los sueños lidera una misión para implantar una idea en la mente de un objetivo, desafiando los límites entre la realidad y el subconsciente."
+      }
+    },
+    {
+      "id": "interstellar",
+      "fields": {
+        "title": "Interestelar",
+        "description": "Un grupo de exploradores viaja a través de un agujero de gusano en el espacio con el objetivo de encontrar un nuevo hogar para la humanidad ante la inminente extinción en la Tierra."
+      }
+    },
+    {
+      "id": "the_matrix",
+      "fields": {
+        "title": "Matrix",
+        "description": "Un hacker descubre que el mundo en el que vive es una simulación controlada por máquinas y se une a una rebelión para liberar a la humanidad."
+      }
+    },
+    {
+      "id": "the_lord_of_the_rings_fellowship",
+      "fields": {
+        "title": "El Señor de los Anillos: La Comunidad del Anillo",
+        "description": "Un joven hobbit emprende un peligroso viaje para destruir un anillo de poder y evitar que un antiguo mal vuelva a dominar la Tierra Media."
+      }
+    },
+    {
+      "id": "titanic",
+      "fields": {
+        "title": "Titanic",
+        "description": "Una historia de amor surge entre dos pasajeros de distintas clases sociales a bordo del famoso transatlántico durante su trágico viaje inaugural."
+      }
+    }
+  ]
+}

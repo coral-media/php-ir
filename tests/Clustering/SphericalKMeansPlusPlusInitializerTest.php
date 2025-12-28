@@ -9,7 +9,7 @@
 
 namespace CoralMedia\PhpIr\Tests\Clustering;
 
-use CoralMedia\PhpIr\Clustering\SphericalKMeansPlusPlusInitializer;
+use CoralMedia\PhpIr\Clustering\Initializer\SphericalKMeansPlusPlusInitializer;
 use CoralMedia\PhpIr\Collection\VectorCollection;
 use CoralMedia\PhpIr\Distance\CosineSimilarity;
 use CoralMedia\PhpIr\Vector\DenseVector;

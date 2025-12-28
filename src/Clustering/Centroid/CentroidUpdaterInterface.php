@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * (c) Rafael Ernesto Espinosa Santiesteban <rernesto.espinosa@gmail.com>
  *
@@ -9,18 +7,19 @@ declare(strict_types=1);
  * with this source code in the file LICENSE.
  */
 
-namespace CoralMedia\PhpIr\Clustering;
+namespace CoralMedia\PhpIr\Clustering\Centroid;
 
 use CoralMedia\PhpIr\Collection\VectorCollectionInterface;
 use CoralMedia\PhpIr\Vector\VectorInterface;
 
-interface CentroidInitializerInterface
+interface CentroidUpdaterInterface
 {
     /**
-     * @return list<VectorInterface>
+     * @param VectorCollectionInterface $vectors
+     * @param list<int|string> $assignments
      */
-    public function initialize(
-        VectorCollectionInterface $collection,
-        int $k,
-    ): array;
+    public function update(
+        VectorCollectionInterface $vectors,
+        array $assignments,
+    ): VectorInterface;
 }

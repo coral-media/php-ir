@@ -9,8 +9,9 @@ declare(strict_types=1);
  * with this source code in the file LICENSE.
  */
 
-namespace CoralMedia\PhpIr\Clustering;
+namespace CoralMedia\PhpIr\Clustering\Initializer;
 
+use CoralMedia\PhpIr\Clustering\Centroid\CentroidInitializerInterface;
 use CoralMedia\PhpIr\Collection\VectorCollectionInterface;
 use CoralMedia\PhpIr\Distance\SimilarityInterface;
 use InvalidArgumentException;
