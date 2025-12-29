@@ -1,5 +1,10 @@
 # Changelog
 
+## [v0.6.2](https://github.com/coral-media/php-ir/releases/tag/v0.6.2)
+
+- [cdc8913](https://github.com/coral-media/php-ir/commit/cdc8913c4e5b10fd2d4dfec2e689dc20383ef48e) refactor: centralize sparse-to-dense corpus conversion and expose vocabulary IDF stats
+- [ed81460](https://github.com/coral-media/php-ir/commit/ed81460848a468314469e119e69363e7f1a16ed0) docs(changelog): update for v0.6.1
+
 ## [v0.6.1](https://github.com/coral-media/php-ir/releases/tag/v0.6.1)
 
 - [c494d3e](https://github.com/coral-media/php-ir/commit/c494d3eafd427c9a30dc5c56e2b64a54e4eadeb4) chore(release): bump version to 0.6.1
