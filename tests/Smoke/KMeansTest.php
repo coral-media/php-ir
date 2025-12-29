@@ -24,6 +24,7 @@ use CoralMedia\PhpIr\Feature\TermFrequency\RawTermFrequencyExtractor;
 use CoralMedia\PhpIr\Feature\Tokenizer\RegexTokenizer;
 use CoralMedia\PhpIr\Feature\Vocabulary\VocabularyBuilder;
 use CoralMedia\PhpIr\Vector\DenseVector;
+use CoralMedia\PhpIr\Vector\DenseVectorCollectionFactory;
 use CoralMedia\PhpIr\Vector\Vectorizer\SparseVectorizer;
 use CoralMedia\PhpIr\Weighting\SphericalTfIdfCorpusBuilder;
 use JsonException;
@@ -101,19 +102,9 @@ final class KMeansTest extends TestCase
             ->build($indexedDocuments)
         ;
 
-        $corpus = new VectorCollection(
-            array_map(
-                static function ($vector) use ($dimension): DenseVector {
-                    $dense = array_fill(0, $dimension, 0.0);
-
-                    foreach ($vector->toArray() as $i => $v) {
-                        $dense[$i] = $v;
-                    }
-
-                    return new DenseVector($dense);
-                },
-                iterator_to_array($sparseCorpus),
-            ),
+        $corpus = DenseVectorCollectionFactory::fromSparse(
+            $sparseCorpus,
+            $dimension,
         );
 
         $medianResult = KMeansFactory::sphericalMedian(200)->cluster($corpus, 4);

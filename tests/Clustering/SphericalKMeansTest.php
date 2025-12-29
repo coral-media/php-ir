@@ -19,6 +19,7 @@ use CoralMedia\PhpIr\Distance\CosineSimilarity;
 use CoralMedia\PhpIr\Normalization\L2Normalizer;
 use CoralMedia\PhpIr\Normalization\VectorCollectionNormalizer;
 use CoralMedia\PhpIr\Vector\DenseVector;
+use CoralMedia\PhpIr\Vector\DenseVectorCollectionFactory;
 use CoralMedia\PhpIr\Weighting\TfIdfCorpusBuilder;
 use PHPUnit\Framework\TestCase;
 
@@ -86,18 +87,9 @@ final class SphericalKMeansTest extends TestCase
         ;
 
         // Densify vectors to fixed dimension
-        $corpus = new VectorCollection(
-            array_map(
-                static function ($vector) use ($dimension) {
-                    $dense = array_fill(0, $dimension, 0.0);
-                    foreach ($vector->toArray() as $i => $v) {
-                        $dense[$i] = $v;
-                    }
-
-                    return new DenseVector($dense);
-                },
-                iterator_to_array($sparseCorpus),
-            ),
+        $corpus = DenseVectorCollectionFactory::fromSparse(
+            $sparseCorpus,
+            $dimension,
         );
 
         // -------------------------------------------------
