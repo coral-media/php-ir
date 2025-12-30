@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace CoralMedia\PhpIr\Feature\Normalization;
 
-final class StemmingNormalizer implements TextNormalizerInterface
+final readonly class StemmingNormalizer implements TextNormalizerInterface
 {
     public function __construct(
         private StemmerInterface $stemmer,

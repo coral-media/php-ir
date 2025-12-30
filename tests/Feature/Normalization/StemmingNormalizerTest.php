@@ -22,7 +22,7 @@ final class StemmingNormalizerTest extends TestCase
     public function testAdapterAppliesStemFunction(): void
     {
         $adapter = new PorterStemmerAdapter(
-            static fn (string $t): string => 'stem',
+            static fn (): string => 'stem',
         );
 
         $this->assertSame('stem', $adapter->stem('running'));

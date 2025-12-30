@@ -18,6 +18,9 @@ use CoralMedia\PhpIr\Distance\CosineSimilarity;
 use CoralMedia\PhpIr\Feature\Normalization\AccentNormalizer;
 use CoralMedia\PhpIr\Feature\Normalization\CompositeTextNormalizer;
 use CoralMedia\PhpIr\Feature\Normalization\LowercaseNormalizer;
+use CoralMedia\PhpIr\Feature\Normalization\NullStemmer;
+use CoralMedia\PhpIr\Feature\Normalization\PorterStemmerAdapter;
+use CoralMedia\PhpIr\Feature\Normalization\StemmingNormalizer;
 use CoralMedia\PhpIr\Feature\StopWords\Language\English;
 use CoralMedia\PhpIr\Feature\StopWords\Language\Spanish;
 use CoralMedia\PhpIr\Feature\StopWords\StopWordsFilter;
@@ -43,7 +46,7 @@ final class SphericalKMedianQualityTest extends TestCase
         );
         $meanWins = 0;
         $medianWins = 0;
-        for ($i = 0; $i < 20; ++$i) {
+        for ($i = 0; $i < 100; ++$i) {
             $meanResult = KMeansFactory::spherical(150)
                 ->cluster($corpus, 2)
             ;
@@ -108,6 +111,9 @@ final class SphericalKMedianQualityTest extends TestCase
             $normalizer = new CompositeTextNormalizer([
                 new LowercaseNormalizer(),
                 new AccentNormalizer(),
+                new StemmingNormalizer(
+                    new PorterStemmerAdapter(static fn (string $t): string => (new NullStemmer())->stem($t)),
+                ),
             ]);
 
             /** @var array<string, array<string, int>> $documentsTf */
