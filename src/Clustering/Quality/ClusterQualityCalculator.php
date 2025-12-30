@@ -1,0 +1,155 @@
+<?php
+
+declare(strict_types=1);
+
+/*
+ * (c) Rafael Ernesto Espinosa Santiesteban <rernesto.espinosa@gmail.com>
+ *
+ * This source file is subject to the license that is bundled
+ * with this source code in the file LICENSE.
+ */
+
+namespace CoralMedia\PhpIr\Clustering\Quality;
+
+use CoralMedia\PhpIr\Clustering\ClusterResult;
+use CoralMedia\PhpIr\Collection\VectorCollectionInterface;
+use CoralMedia\PhpIr\Distance\SimilarityInterface;
+use CoralMedia\PhpIr\Vector\VectorInterface;
+use InvalidArgumentException;
+
+final readonly class ClusterQualityCalculator
+{
+    public function __construct(
+        private SimilarityInterface $similarity,
+    ) {
+    }
+
+    public function evaluate(
+        VectorCollectionInterface $collection,
+        ClusterResult $result,
+    ): ClusterQualityReport {
+        if ($collection->count() === 0) {
+            throw new InvalidArgumentException('Cannot evaluate empty collection.');
+        }
+
+        if ([] === $result->assignments) {
+            throw new InvalidArgumentException('ClusterResult has no assignments.');
+        }
+
+        // -------------------------------------------------
+        // 1. Cohesion
+        // -------------------------------------------------
+        $cohesionPerCluster = $this->computeCohesion(
+            $collection,
+            $result,
+        );
+
+        $averageCohesion = $this->average($cohesionPerCluster);
+
+        // -------------------------------------------------
+        // 2. Separation
+        // -------------------------------------------------
+        $interCentroidSimilarity = $this->computeInterCentroidSimilarity(
+            $result->centroids,
+        );
+
+        $averageInterCentroidSimilarity = $this->average(
+            $interCentroidSimilarity,
+        );
+
+        // -------------------------------------------------
+        // 3. Global quality score (IR-book aligned)
+        // -------------------------------------------------
+        $qualityScore = $averageInterCentroidSimilarity > 0.0
+            ? $averageCohesion / $averageInterCentroidSimilarity
+            : $averageCohesion;
+
+        return new ClusterQualityReport(
+            cohesionPerCluster: $cohesionPerCluster,
+            averageCohesion: $averageCohesion,
+            interCentroidSimilarity: $interCentroidSimilarity,
+            averageInterCentroidSimilarity: $averageInterCentroidSimilarity,
+            qualityScore: $qualityScore,
+        );
+    }
+
+    /**
+     * @return array<int, float>
+     */
+    private function computeCohesion(
+        VectorCollectionInterface $collection,
+        ClusterResult $result,
+    ): array {
+        $cohesion = [];
+
+        foreach ($result->assignments as $clusterIndex => $keys) {
+            if ([] === $keys) {
+                $cohesion[$clusterIndex] = 0.0;
+                continue;
+            }
+
+            $centroid = $result->centroids[$clusterIndex];
+            $cohesion[$clusterIndex] = $this->clusterCohesion(
+                $collection,
+                $centroid,
+                $keys,
+            );
+        }
+
+        return $cohesion;
+    }
+
+    /**
+     * @param list<int|string> $keys
+     */
+    private function clusterCohesion(
+        VectorCollectionInterface $collection,
+        VectorInterface $centroid,
+        array $keys,
+    ): float {
+        $sum = 0.0;
+
+        foreach ($keys as $key) {
+            $sum += $this->similarity->similarity(
+                $collection->get($key),
+                $centroid,
+            );
+        }
+
+        return $sum / \count($keys);
+    }
+
+    /**
+     * @param array<int, VectorInterface> $centroids
+     * @return array<string, float>
+     */
+    private function computeInterCentroidSimilarity(
+        array $centroids,
+    ): array {
+        $similarity = [];
+        $k = \count($centroids);
+
+        for ($i = 0; $i < $k; $i++) {
+            for ($j = $i + 1; $j < $k; $j++) {
+                $similarity["{$i}-{$j}"] = $this->similarity->similarity(
+                    $centroids[$i],
+                    $centroids[$j],
+                );
+            }
+        }
+
+        return $similarity;
+    }
+
+    /**
+     * @param array<mixed, float> $values
+     */
+    private function average(array $values): float
+    {
+        if ([] === $values) {
+            return 0.0;
+        }
+
+        return array_sum($values) / \count($values);
+    }
+}
