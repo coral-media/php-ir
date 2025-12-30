@@ -1,5 +1,15 @@
 # PHP-IR
 
+![PHP](https://img.shields.io/badge/php-8.2%2B-777BB4?logo=php)
+![License](https://img.shields.io/packagist/l/coral-media/php-ir)
+
+![PHPStan](https://img.shields.io/badge/phpstan-level%2010-brightgreen)
+![PHPMD](https://img.shields.io/badge/phpmd-enabled-blue)
+
+![GitHub last commit](https://img.shields.io/github/last-commit/coral-media/php-ir)
+![GitHub repo size](https://img.shields.io/github/repo-size/coral-media/php-ir)
+
+
 **PHP-IR** is a modern, research-oriented **Information Retrieval (IR)** and **Vector Space Modeling** library for PHP, focused on correctness, transparency, and theoretical grounding.
 
 It provides low-level, composable primitives for **text representation, weighting, similarity, clustering, and evaluation**, designed for engineers who need **full control and explainability**, not opaque ML abstractions.
