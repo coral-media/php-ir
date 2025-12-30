@@ -15,17 +15,14 @@ use CoralMedia\PhpIr\Collection\VectorCollection;
 use CoralMedia\PhpIr\Vector\SparseVector;
 use InvalidArgumentException;
 
-final class TfIdfCorpusBuilder
+final readonly class TfIdfCorpusBuilder
 {
-    private int $dimension;
 
-    public function __construct(int $dimension)
+    public function __construct(private int $dimension)
     {
         if ($dimension <= 0) {
             throw new InvalidArgumentException('Vector dimension must be greater than zero.');
         }
-
-        $this->dimension = $dimension;
     }
 
     /**

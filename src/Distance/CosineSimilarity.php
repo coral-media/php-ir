@@ -14,10 +14,10 @@ namespace CoralMedia\PhpIr\Distance;
 use CoralMedia\PhpIr\Vector\VectorInterface;
 use InvalidArgumentException;
 
-final class CosineSimilarity implements SimilarityInterface
+final readonly class CosineSimilarity implements SimilarityInterface
 {
     public function __construct(
-        private readonly bool $normalize = true,
+        private bool $normalize = true,
     ) {
     }
 

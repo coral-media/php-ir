@@ -15,10 +15,10 @@ use CoralMedia\PhpIr\Vector\Vectorizer\SparseVectorizer;
 use CoralMedia\PhpIr\Weighting\TfIdfCorpusBuilder;
 use CoralMedia\PhpIr\Collection\VectorCollection;
 
-final class CorpusVectorProcessor
+final readonly class CorpusVectorProcessor
 {
     public function __construct(
-        private SparseVectorizer $vectorizer,
+        private SparseVectorizer   $vectorizer,
         private TfIdfCorpusBuilder $tfIdfBuilder,
     ) {
     }

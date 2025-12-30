@@ -46,7 +46,6 @@ final class MedianCentroidUpdater implements CentroidUpdaterInterface
             $n = \count($values);
             $mid = intdiv($n, 2);
 
-            // component-wise median
             if (1 === ($n % 2)) {
                 $medians[$i] = (float) $values[$mid];
             } else {

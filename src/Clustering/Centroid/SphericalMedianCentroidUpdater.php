@@ -28,7 +28,8 @@ final class SphericalMedianCentroidUpdater implements CentroidUpdaterInterface
 
     /**
      * @param VectorCollectionInterface $vectors
-     * @param list<string>              $assignments
+     * @param list<string> $assignments
+     * @return VectorInterface
      */
     public function update(
         VectorCollectionInterface $vectors,
@@ -42,9 +43,6 @@ final class SphericalMedianCentroidUpdater implements CentroidUpdaterInterface
 
         $dimension = $vectors->dimension();
 
-        // -------------------------------------------------
-        // Collect NON-ZERO values per dimension
-        // -------------------------------------------------
         $valuesByDimension = array_fill(0, $dimension, []);
 
         foreach ($assignments as $key) {
@@ -66,9 +64,6 @@ final class SphericalMedianCentroidUpdater implements CentroidUpdaterInterface
             }
         }
 
-        // -------------------------------------------------
-        // Compute per-dimension median (robust)
-        // -------------------------------------------------
         $medianValues = [];
 
         foreach ($valuesByDimension as $values) {
@@ -89,13 +84,9 @@ final class SphericalMedianCentroidUpdater implements CentroidUpdaterInterface
             }
         }
 
-        // -------------------------------------------------
-        // Build + normalize centroid (SPHERICAL)
-        // -------------------------------------------------
         $centroid = new DenseVector($medianValues);
         $centroid = $this->normalizer->normalize($centroid);
 
-        // Defensive invariant
         if ($centroid->dimension() !== $dimension) {
             throw new InvalidArgumentException(
                 'Centroid dimension mismatch after median computation.',

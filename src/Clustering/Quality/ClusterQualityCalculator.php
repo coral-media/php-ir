@@ -36,9 +36,6 @@ final readonly class ClusterQualityCalculator
             throw new InvalidArgumentException('ClusterResult has no assignments.');
         }
 
-        // -------------------------------------------------
-        // 1. Cohesion
-        // -------------------------------------------------
         $cohesionPerCluster = $this->computeCohesion(
             $collection,
             $result,
@@ -46,9 +43,6 @@ final readonly class ClusterQualityCalculator
 
         $averageCohesion = $this->average($cohesionPerCluster);
 
-        // -------------------------------------------------
-        // 2. Separation
-        // -------------------------------------------------
         $interCentroidSimilarity = $this->computeInterCentroidSimilarity(
             $result->centroids,
         );
@@ -57,18 +51,12 @@ final readonly class ClusterQualityCalculator
             $interCentroidSimilarity,
         );
 
-        // -------------------------------------------------
-        // 3. Entropy (cluster size distribution)
-        // -------------------------------------------------
         [$clusterEntropy, $normalizedClusterEntropy] =
             $this->computeClusterEntropy(
                 $result,
                 $collection->count(),
             );
 
-        // -------------------------------------------------
-        // 4. Global quality score (IR-aligned)
-        // -------------------------------------------------
         $qualityScore = $averageInterCentroidSimilarity > 0.0
             ? $averageCohesion / $averageInterCentroidSimilarity
             : $averageCohesion;

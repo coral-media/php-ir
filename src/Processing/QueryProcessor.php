@@ -16,7 +16,7 @@ use CoralMedia\PhpIr\Feature\TermFrequency\TermFrequencyExtractorInterface;
 use CoralMedia\PhpIr\Vector\VectorInterface;
 use CoralMedia\PhpIr\Vector\Vectorizer\SparseVectorizer;
 
-final class QueryProcessor
+final readonly class QueryProcessor
 {
     public function __construct(
         private TokenizerInterface $tokenizer,

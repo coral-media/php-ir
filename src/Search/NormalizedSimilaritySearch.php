@@ -16,12 +16,12 @@ use CoralMedia\PhpIr\Normalization\VectorCollectionNormalizer;
 use CoralMedia\PhpIr\Normalization\VectorNormalizerInterface;
 use CoralMedia\PhpIr\Vector\VectorInterface;
 
-final class NormalizedSimilaritySearch
+final readonly class NormalizedSimilaritySearch
 {
     public function __construct(
-        private readonly SimilaritySearch $search,
-        private readonly VectorNormalizerInterface $normalizer,
-        private readonly VectorCollectionNormalizer $collectionNormalizer,
+        private SimilaritySearch           $search,
+        private VectorNormalizerInterface  $normalizer,
+        private VectorCollectionNormalizer $collectionNormalizer,
     ) {
     }
 

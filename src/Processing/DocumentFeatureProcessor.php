@@ -15,7 +15,7 @@ use CoralMedia\PhpIr\Feature\Tokenizer\TokenizerInterface;
 use CoralMedia\PhpIr\Feature\TermFrequency\TermFrequencyExtractorInterface;
 use CoralMedia\PhpIr\Feature\Vocabulary\VocabularyBuilder;
 
-final class DocumentFeatureProcessor
+final readonly class DocumentFeatureProcessor
 {
     public function __construct(
         private TokenizerInterface $tokenizer,

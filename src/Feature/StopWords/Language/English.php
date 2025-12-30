@@ -16,7 +16,7 @@ final class English
     public static function default(): StopWordsSet
     {
         return new StopWordsSet([
-            'a', 'e', 'i', 'o', 'u',
+            'a', 'e', 'i', 'o', 'u', 's',
             'the', 'an','and','or','but',
             'is','are','was','were',
             'of','to','in','on','for','with',

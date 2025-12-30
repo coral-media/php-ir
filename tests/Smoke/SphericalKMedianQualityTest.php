@@ -127,9 +127,6 @@ final class SphericalKMedianQualityTest extends TestCase
                 $vocabulary->addDocument($tf);
             }
 
-            // -------------------------------------------------
-            // Vectorization (CRITICAL FIX)
-            // -------------------------------------------------
             $vectorizer = new SparseVectorizer($vocabulary);
 
             /** @var array<string, array<int, float>> $indexedDocuments */

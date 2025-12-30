@@ -88,7 +88,8 @@ final class VocabularyBuilder implements VocabularyInterface
     }
 
     /**
-     * @param array<mixed,mixed> $array
+     * @param array<mixed, mixed> $array
+     * @return bool
      */
     private function isAssociative(array $array): bool
     {

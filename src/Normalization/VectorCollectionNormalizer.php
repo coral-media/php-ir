@@ -14,10 +14,10 @@ namespace CoralMedia\PhpIr\Normalization;
 use CoralMedia\PhpIr\Collection\VectorCollection;
 use CoralMedia\PhpIr\Collection\VectorCollectionInterface;
 
-final class VectorCollectionNormalizer
+final readonly class VectorCollectionNormalizer
 {
     public function __construct(
-        private readonly VectorNormalizerInterface $normalizer,
+        private VectorNormalizerInterface $normalizer,
     ) {
     }
 

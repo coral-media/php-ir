@@ -13,6 +13,7 @@ namespace CoralMedia\PhpIr\Collection;
 
 use CoralMedia\PhpIr\Vector\VectorInterface;
 use IteratorAggregate;
+use OutOfBoundsException;
 
 /**
  * @extends IteratorAggregate<int|string, VectorInterface>
@@ -32,7 +33,7 @@ interface VectorCollectionInterface extends IteratorAggregate
     /**
      * Returns a vector by key.
      *
-     * @throws \OutOfBoundsException
+     * @throws OutOfBoundsException
      */
     public function get(int|string $key): VectorInterface;
 }

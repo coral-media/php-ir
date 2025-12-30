@@ -16,7 +16,7 @@ use CoralMedia\PhpIr\Collection\VectorCollection;
 use CoralMedia\PhpIr\Vector\VectorInterface;
 use CoralMedia\PhpIr\Search\SearchResult;
 
-final class SearchProcessor
+final readonly class SearchProcessor
 {
     public function __construct(
         private SimilaritySearch $search,
