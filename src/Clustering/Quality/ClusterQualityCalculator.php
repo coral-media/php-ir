@@ -58,7 +58,16 @@ final readonly class ClusterQualityCalculator
         );
 
         // -------------------------------------------------
-        // 3. Global quality score (IR-book aligned)
+        // 3. Entropy (cluster size distribution)
+        // -------------------------------------------------
+        [$clusterEntropy, $normalizedClusterEntropy] =
+            $this->computeClusterEntropy(
+                $result,
+                $collection->count(),
+            );
+
+        // -------------------------------------------------
+        // 4. Global quality score (IR-aligned)
         // -------------------------------------------------
         $qualityScore = $averageInterCentroidSimilarity > 0.0
             ? $averageCohesion / $averageInterCentroidSimilarity
@@ -69,6 +78,8 @@ final readonly class ClusterQualityCalculator
             averageCohesion: $averageCohesion,
             interCentroidSimilarity: $interCentroidSimilarity,
             averageInterCentroidSimilarity: $averageInterCentroidSimilarity,
+            clusterEntropy: $clusterEntropy,
+            normalizedClusterEntropy: $normalizedClusterEntropy,
             qualityScore: $qualityScore,
         );
     }
@@ -139,6 +150,37 @@ final readonly class ClusterQualityCalculator
         }
 
         return $similarity;
+    }
+
+    /**
+     * Computes cluster size entropy and normalized entropy.
+     *
+     * @return array{0: float, 1: float}
+     */
+    private function computeClusterEntropy(
+        ClusterResult $result,
+        int $totalDocuments,
+    ): array {
+        $entropy = 0.0;
+        $k = \count($result->assignments);
+
+        if ($k <= 1) {
+            return [0.0, 0.0];
+        }
+
+        foreach ($result->assignments as $keys) {
+            $size = \count($keys);
+            if (0 === $size) {
+                continue;
+            }
+
+            $p = $size / $totalDocuments;
+            $entropy -= $p * log($p);
+        }
+
+        $normalizedEntropy = $entropy / log($k);
+
+        return [$entropy, $normalizedEntropy];
     }
 
     /**

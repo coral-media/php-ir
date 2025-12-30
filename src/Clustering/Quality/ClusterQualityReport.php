@@ -22,6 +22,8 @@ final readonly class ClusterQualityReport
         public float $averageCohesion,
         public array $interCentroidSimilarity,
         public float $averageInterCentroidSimilarity,
+        public float $clusterEntropy,
+        public float $normalizedClusterEntropy,
         public float $qualityScore,
     ) {
     }
