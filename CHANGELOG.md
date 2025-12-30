@@ -1,7 +1,12 @@
 # Changelog
 
+## [v0.6.3](https://github.com/coral-media/php-ir/releases/tag/v0.6.3)
+
+- [99c4a98](https://github.com/coral-media/php-ir/commit/99c4a9805d76ff84bded1036965f998fc462a7c3) feat(clustering): add cluster quality evaluation and median robustness test
+
 ## [v0.6.2](https://github.com/coral-media/php-ir/releases/tag/v0.6.2)
 
+- [0fab7ff](https://github.com/coral-media/php-ir/commit/0fab7ff14b757d2b54e2eeceb02cb8a772f788b3) chore(release): bump version to 0.6.2
 - [cdc8913](https://github.com/coral-media/php-ir/commit/cdc8913c4e5b10fd2d4dfec2e689dc20383ef48e) refactor: centralize sparse-to-dense corpus conversion and expose vocabulary IDF stats
 - [ed81460](https://github.com/coral-media/php-ir/commit/ed81460848a468314469e119e69363e7f1a16ed0) docs(changelog): update for v0.6.1
 
