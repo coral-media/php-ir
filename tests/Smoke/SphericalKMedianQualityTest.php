@@ -154,15 +154,7 @@ final class SphericalKMedianQualityTest extends TestCase
                 ->build($indexedDocuments)
             ;
 
-            // -------------------------------------------------
-            // Densify for clustering
-            // -------------------------------------------------
-            $corpus = DenseVectorCollectionFactory::fromSparse(
-                $sphericalTfIdf,
-                $dimension,
-            );
-
-            yield $label => [$corpus];
+            yield $label => [$sphericalTfIdf];
         }
     }
 }

@@ -24,15 +24,9 @@ final readonly class CosineSimilarity implements SimilarityInterface
 
     public function similarity(VectorInterface $a, VectorInterface $b): float
     {
-        if ($a->dimension() !== $b->dimension()) {
-            throw new InvalidArgumentException(
-                'Vectors must have the same dimension to compute cosine similarity.',
-            );
-        }
-
-        // -------------------------------
-        // Fast path: sparse × dense
-        // -------------------------------
+        // -------------------------------------------------
+        // Fast path: sparse × dense (document × centroid)
+        // -------------------------------------------------
         if ($b instanceof DenseVector) {
             return $this->cosineSparseDense($a, $b);
         }
@@ -41,12 +35,22 @@ final readonly class CosineSimilarity implements SimilarityInterface
             return $this->cosineSparseDense($b, $a);
         }
 
-        // -------------------------------
-        // Fallback: generic (existing logic)
-        // -------------------------------
+        // -------------------------------------------------
+        // Dense × dense (strict dimensionality)
+        // -------------------------------------------------
+        if ($a->dimension() !== $b->dimension()) {
+            throw new InvalidArgumentException(
+                'Vectors must have the same dimension to compute cosine similarity.',
+            );
+        }
+
+        // -------------------------------------------------
+        // Generic fallback (sparse × sparse or dense × dense)
+        // -------------------------------------------------
         $valuesA = $a->toArray();
         $valuesB = $b->toArray();
 
+        // Iterate over the smaller set
         if (\count($valuesA) > \count($valuesB)) {
             [$valuesA, $valuesB] = [$valuesB, $valuesA];
             [$a, $b] = [$b, $a];
@@ -54,7 +58,7 @@ final readonly class CosineSimilarity implements SimilarityInterface
 
         $dotProduct = 0.0;
         foreach ($valuesA as $index => $valueA) {
-            $dotProduct += $valueA * $b->get((int) $index);
+            $dotProduct += (float) $valueA * $b->get((int) $index);
         }
 
         if (false === $this->normalize) {
@@ -65,7 +69,10 @@ final readonly class CosineSimilarity implements SimilarityInterface
     }
 
     /**
-     * Sparse document × dense centroid cosine similarity.
+     * Cosine similarity between a sparse vector and a dense centroid.
+     *
+     * @param VectorInterface $sparse   Sparse document vector
+     * @param DenseVector    $dense    Dense centroid vector
      */
     private function cosineSparseDense(
         VectorInterface $sparse,
@@ -95,7 +102,7 @@ final readonly class CosineSimilarity implements SimilarityInterface
     {
         $sum = 0.0;
         foreach ($v->toArray() as $value) {
-            $sum += $value * $value;
+            $sum += (float) $value * (float) $value;
         }
 
         return sqrt($sum);
