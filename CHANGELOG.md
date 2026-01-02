@@ -1,7 +1,13 @@
 # Changelog
 
+## [v0.6.5](https://github.com/coral-media/php-ir/releases/tag/v0.6.5)
+
+- [bc8a1a8](https://github.com/coral-media/php-ir/commit/bc8a1a8fbceff0cf7b711e160024d674a4a4d93f) fix(distance): allow sparse × dense cosine similarity in clustering
+- [3713be8](https://github.com/coral-media/php-ir/commit/3713be8c854d7670b949816306eba62900a7adcc) fix(distance): optimize cosine similarity for sparse × dense vectors
+
 ## [v0.6.4](https://github.com/coral-media/php-ir/releases/tag/v0.6.4)
 
+- [460cd95](https://github.com/coral-media/php-ir/commit/460cd95c3b47411ce19ca4612586d79d105a8ad3) chore(release): bump version to 0.6.4
 - [9375e29](https://github.com/coral-media/php-ir/commit/9375e29a83caa1366315e3098fb13467f99d5e19) fix(vector): support iterable sparse corpora in dense collection factory
 - [da27faf](https://github.com/coral-media/php-ir/commit/da27faf36060511e8f283e5090fa4a65496adb07) chore(ir-pipeline): harden stemming normalization and test infrastructure
 - [653e8c8](https://github.com/coral-media/php-ir/commit/653e8c8fe9979d6551462c7e099e34801faf2a94) refactor(core): tighten immutability, clean quality and centroid implementations
