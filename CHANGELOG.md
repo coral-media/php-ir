@@ -1,7 +1,17 @@
 # Changelog
 
+## [v0.6.4](https://github.com/coral-media/php-ir/releases/tag/v0.6.4)
+
+- [9375e29](https://github.com/coral-media/php-ir/commit/9375e29a83caa1366315e3098fb13467f99d5e19) fix(vector): support iterable sparse corpora in dense collection factory
+- [da27faf](https://github.com/coral-media/php-ir/commit/da27faf36060511e8f283e5090fa4a65496adb07) chore(ir-pipeline): harden stemming normalization and test infrastructure
+- [653e8c8](https://github.com/coral-media/php-ir/commit/653e8c8fe9979d6551462c7e099e34801faf2a94) refactor(core): tighten immutability, clean quality and centroid implementations
+- [5e348aa](https://github.com/coral-media/php-ir/commit/5e348aaac208f2376744a6ad2cdba2f88e6c3d04) feat(clustering): add entropy metrics to cluster quality evaluation
+- [94084cb](https://github.com/coral-media/php-ir/commit/94084cb4b344066275cc193dc7dda0765d36b835) chore(docs): added info badges
+- [fd707b0](https://github.com/coral-media/php-ir/commit/fd707b0adc1b6d0dae4755662c60c7bbfe8eda03) docs: add descriptive README with IR foundations and library overview
+
 ## [v0.6.3](https://github.com/coral-media/php-ir/releases/tag/v0.6.3)
 
+- [22e5d51](https://github.com/coral-media/php-ir/commit/22e5d513a8a06ef7ae1d1084fe7efac43e812ad8) chore(release): bump version to 0.6.3
 - [99c4a98](https://github.com/coral-media/php-ir/commit/99c4a9805d76ff84bded1036965f998fc462a7c3) feat(clustering): add cluster quality evaluation and median robustness test
 
 ## [v0.6.2](https://github.com/coral-media/php-ir/releases/tag/v0.6.2)
