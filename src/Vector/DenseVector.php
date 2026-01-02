@@ -20,6 +20,8 @@ final class DenseVector implements VectorInterface
      */
     private array $values;
 
+    private ?float $norm = null;
+
     /**
      * @param array<int, float|int> $values
      */
@@ -43,6 +45,21 @@ final class DenseVector implements VectorInterface
     public function get(int $index): float
     {
         return $this->values[$index] ?? 0.0;
+    }
+
+
+    public function norm(): float
+    {
+        if (null !== $this->norm) {
+            return $this->norm;
+        }
+
+        $sum = 0.0;
+        foreach ($this->values as $v) {
+            $sum += $v * $v;
+        }
+
+        return $this->norm = sqrt($sum);
     }
 
     /**

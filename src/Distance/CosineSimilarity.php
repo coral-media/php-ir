@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace CoralMedia\PhpIr\Distance;
 
+use CoralMedia\PhpIr\Vector\DenseVector;
 use CoralMedia\PhpIr\Vector\VectorInterface;
 use InvalidArgumentException;
 
@@ -29,40 +30,74 @@ final readonly class CosineSimilarity implements SimilarityInterface
             );
         }
 
+        // -------------------------------
+        // Fast path: sparse × dense
+        // -------------------------------
+        if ($b instanceof DenseVector) {
+            return $this->cosineSparseDense($a, $b);
+        }
+
+        if ($a instanceof DenseVector) {
+            return $this->cosineSparseDense($b, $a);
+        }
+
+        // -------------------------------
+        // Fallback: generic (existing logic)
+        // -------------------------------
         $valuesA = $a->toArray();
         $valuesB = $b->toArray();
 
-        // Choose smaller set for dot-product iteration
         if (\count($valuesA) > \count($valuesB)) {
             [$valuesA, $valuesB] = [$valuesB, $valuesA];
             [$a, $b] = [$b, $a];
         }
 
         $dotProduct = 0.0;
-
         foreach ($valuesA as $index => $valueA) {
-            $dotProduct += $valueA * $b->get($index);
+            $dotProduct += $valueA * $b->get((int) $index);
         }
 
-        // Fast path: spherical / already normalized
         if (false === $this->normalize) {
             return $dotProduct;
         }
 
-        $normA = 0.0;
-        foreach ($a->toArray() as $value) {
-            $normA += $value * $value;
+        return $dotProduct / ($this->norm($a) * $this->norm($b));
+    }
+
+    /**
+     * Sparse document × dense centroid cosine similarity.
+     */
+    private function cosineSparseDense(
+        VectorInterface $sparse,
+        DenseVector $dense,
+    ): float {
+        $dot = 0.0;
+        $normSparse2 = 0.0;
+
+        foreach ($sparse->toArray() as $i => $v) {
+            $fv = (float) $v;
+            $dot += $fv * $dense->get((int) $i);
+            $normSparse2 += $fv * $fv;
         }
 
-        $normB = 0.0;
-        foreach ($b->toArray() as $value) {
-            $normB += $value * $value;
+        if (false === $this->normalize) {
+            return $dot;
         }
 
-        if (0.0 === $normA || 0.0 === $normB) {
+        if (0.0 === $normSparse2) {
             return 0.0;
         }
 
-        return $dotProduct / (sqrt($normA) * sqrt($normB));
+        return $dot / (sqrt($normSparse2) * $dense->norm());
+    }
+
+    private function norm(VectorInterface $v): float
+    {
+        $sum = 0.0;
+        foreach ($v->toArray() as $value) {
+            $sum += $value * $value;
+        }
+
+        return sqrt($sum);
     }
 }
