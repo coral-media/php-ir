@@ -12,12 +12,10 @@ declare(strict_types=1);
 namespace CoralMedia\PhpIr\Weighting;
 
 use CoralMedia\PhpIr\Collection\VectorCollection;
-use CoralMedia\PhpIr\Vector\SparseVector;
 use InvalidArgumentException;
 
 final readonly class TfIdfCorpusBuilder
 {
-
     public function __construct(private int $dimension)
     {
         if ($dimension <= 0) {
