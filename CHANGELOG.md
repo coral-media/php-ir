@@ -1,7 +1,12 @@
 # Changelog
 
+## [v0.7.0](https://github.com/coral-media/php-ir/releases/tag/v0.7.0)
+
+- [45d3147](https://github.com/coral-media/php-ir/commit/45d31473bf14efb9e250b881b7f436ab0c0b146f) fix(ir): make cosine similarity IR-correct and normalize stopwords post-stemming
+
 ## [v0.6.5](https://github.com/coral-media/php-ir/releases/tag/v0.6.5)
 
+- [f5c8e6b](https://github.com/coral-media/php-ir/commit/f5c8e6bd6eed7e0c11ca95576e2dfafbdb9aeb96) chore(release): bump version to 0.6.5
 - [bc8a1a8](https://github.com/coral-media/php-ir/commit/bc8a1a8fbceff0cf7b711e160024d674a4a4d93f) fix(distance): allow sparse × dense cosine similarity in clustering
 - [3713be8](https://github.com/coral-media/php-ir/commit/3713be8c854d7670b949816306eba62900a7adcc) fix(distance): optimize cosine similarity for sparse × dense vectors
 
