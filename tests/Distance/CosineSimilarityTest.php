@@ -87,15 +87,4 @@ final class CosineSimilarityTest extends TestCase
 
         $this->assertSame(0.0, $cosine->similarity($a, $b));
     }
-
-    public function testDimensionMismatchThrows(): void
-    {
-        $this->expectException(InvalidArgumentException::class);
-
-        $a = new DenseVector([1, 2]);
-        $b = new DenseVector([1, 2, 3]);
-        $cosine = new CosineSimilarity();
-
-        $cosine->similarity($a, $b);
-    }
 }

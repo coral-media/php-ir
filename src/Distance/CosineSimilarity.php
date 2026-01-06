@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace CoralMedia\PhpIr\Distance;
 
 use CoralMedia\PhpIr\Vector\DenseVector;
+use CoralMedia\PhpIr\Vector\SparseVector;
 use CoralMedia\PhpIr\Vector\VectorInterface;
 use InvalidArgumentException;
 
@@ -24,58 +25,45 @@ final readonly class CosineSimilarity implements SimilarityInterface
 
     public function similarity(VectorInterface $a, VectorInterface $b): float
     {
-        // -------------------------------------------------
-        // Fast path: sparse × dense (document × centroid)
-        // -------------------------------------------------
-        if ($b instanceof DenseVector) {
+        // Fast path: sparse × dense
+        if ($a instanceof SparseVector && $b instanceof DenseVector) {
             return $this->cosineSparseDense($a, $b);
         }
 
-        if ($a instanceof DenseVector) {
+        if ($b instanceof SparseVector && $a instanceof DenseVector) {
             return $this->cosineSparseDense($b, $a);
         }
 
-        // -------------------------------------------------
-        // Dense × dense (strict dimensionality)
-        // -------------------------------------------------
-        if ($a->dimension() !== $b->dimension()) {
-            throw new InvalidArgumentException(
-                'Vectors must have the same dimension to compute cosine similarity.',
-            );
-        }
-
-        // -------------------------------------------------
-        // Generic fallback (sparse × sparse or dense × dense)
-        // -------------------------------------------------
+        // Generic fallback (sparse × sparse OR dense × dense)
         $valuesA = $a->toArray();
         $valuesB = $b->toArray();
 
-        // Iterate over the smaller set
         if (\count($valuesA) > \count($valuesB)) {
             [$valuesA, $valuesB] = [$valuesB, $valuesA];
             [$a, $b] = [$b, $a];
         }
 
-        $dotProduct = 0.0;
-        foreach ($valuesA as $index => $valueA) {
-            $dotProduct += (float) $valueA * $b->get((int) $index);
+        $dot = 0.0;
+        foreach ($valuesA as $i => $v) {
+            $dot += (float) $v * $b->get((int) $i);
         }
 
         if (false === $this->normalize) {
-            return $dotProduct;
+            return $dot;
         }
 
-        return $dotProduct / ($this->norm($a) * $this->norm($b));
+        $normA = $this->norm($a);
+        $normB = $this->norm($b);
+
+        if (0.0 === $normA || 0.0 === $normB) {
+            return 0.0;
+        }
+
+        return $dot / ($normA * $normB);
     }
 
-    /**
-     * Cosine similarity between a sparse vector and a dense centroid.
-     *
-     * @param VectorInterface $sparse   Sparse document vector
-     * @param DenseVector    $dense    Dense centroid vector
-     */
     private function cosineSparseDense(
-        VectorInterface $sparse,
+        SparseVector $sparse,
         DenseVector $dense,
     ): float {
         $dot = 0.0;
@@ -95,16 +83,22 @@ final readonly class CosineSimilarity implements SimilarityInterface
             return 0.0;
         }
 
-        return $dot / (sqrt($normSparse2) * $dense->norm());
+        $normDense = $dense->norm();
+        if (0.0 === $normDense) {
+            return 0.0;
+        }
+
+        return $dot / (sqrt($normSparse2) * $normDense);
     }
 
     private function norm(VectorInterface $v): float
     {
         $sum = 0.0;
         foreach ($v->toArray() as $value) {
-            $sum += (float) $value * (float) $value;
+            $fv = (float) $value;
+            $sum += $fv * $fv;
         }
 
-        return sqrt($sum);
+        return 0.0 === $sum ? 0.0 : sqrt($sum);
     }
 }
