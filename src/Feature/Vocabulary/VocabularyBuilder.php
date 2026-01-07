@@ -20,6 +20,16 @@ final class VocabularyBuilder implements VocabularyInterface
 
     private int $documentCount = 0;
 
+    public function __construct(
+        private readonly int $frequencyThreshold = 1,
+    ) {
+        if ($this->frequencyThreshold < 1) {
+            throw new InvalidArgumentException(
+                'minDocumentFrequency must be >= 1',
+            );
+        }
+    }
+
     /**
      * Add a document represented as term frequencies or tokens.
      *
@@ -53,7 +63,12 @@ final class VocabularyBuilder implements VocabularyInterface
      */
     public function terms(): array
     {
-        return array_keys($this->documentFrequencies);
+        return array_keys(
+            array_filter(
+                $this->documentFrequencies,
+                fn (int $df): bool => $df >= $this->frequencyThreshold,
+            ),
+        );
     }
 
     public function termAt(int $index): string
@@ -84,12 +99,11 @@ final class VocabularyBuilder implements VocabularyInterface
         }
 
         /** @var list<string> */
-        return array_unique($terms);
+        return array_values(array_unique($terms));
     }
 
     /**
      * @param array<mixed, mixed> $array
-     * @return bool
      */
     private function isAssociative(array $array): bool
     {
