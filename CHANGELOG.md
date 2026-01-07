@@ -1,7 +1,12 @@
 # Changelog
 
+## [v0.7.1](https://github.com/coral-media/php-ir/releases/tag/v0.7.1)
+
+- [22ffc7b](https://github.com/coral-media/php-ir/commit/22ffc7b3feef8ee46a0b414bdba2254c7e7e148d) feat(vocabulary): add minimum document frequency threshold
+
 ## [v0.7.0](https://github.com/coral-media/php-ir/releases/tag/v0.7.0)
 
+- [c9f0152](https://github.com/coral-media/php-ir/commit/c9f01525c0060de041b04c5456ec3f87bd86661b) chore(release): bump version to 0.7.0
 - [45d3147](https://github.com/coral-media/php-ir/commit/45d31473bf14efb9e250b881b7f436ab0c0b146f) fix(ir): make cosine similarity IR-correct and normalize stopwords post-stemming
 
 ## [v0.6.5](https://github.com/coral-media/php-ir/releases/tag/v0.6.5)
