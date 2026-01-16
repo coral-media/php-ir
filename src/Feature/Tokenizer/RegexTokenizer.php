@@ -11,14 +11,18 @@ declare(strict_types=1);
 
 namespace CoralMedia\PhpIr\Feature\Tokenizer;
 
-final class RegexTokenizer implements TokenizerInterface
+final readonly class RegexTokenizer implements TokenizerInterface
 {
+    public function __construct(private string $regex = '/[^\p{L}\p{N}]+/u')
+    {
+    }
+
     public function tokenize(string $text): array
     {
         $text = mb_strtolower($text);
 
         // Split on any non-letter / non-digit sequence
-        $tokens = preg_split('/[^\p{L}\p{N}]+/u', $text);
+        $tokens = preg_split($this->regex, $text);
 
         if (false === $tokens) {
             return [];
