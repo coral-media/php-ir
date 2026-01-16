@@ -1,7 +1,12 @@
 # Changelog
 
+## [v0.7.2](https://github.com/coral-media/php-ir/releases/tag/v0.7.2)
+
+- [782c0d0](https://github.com/coral-media/php-ir/commit/782c0d08a68addaaf84e511b72d3550365e9bf3c) feat(tokenizer): allow custom regex for token splitting
+
 ## [v0.7.1](https://github.com/coral-media/php-ir/releases/tag/v0.7.1)
 
+- [1d0a802](https://github.com/coral-media/php-ir/commit/1d0a802af4906f5ee8339bc7c70e5938aba612b0) chore(release): bump version to 0.7.1
 - [22ffc7b](https://github.com/coral-media/php-ir/commit/22ffc7b3feef8ee46a0b414bdba2254c7e7e148d) feat(vocabulary): add minimum document frequency threshold
 
 ## [v0.7.0](https://github.com/coral-media/php-ir/releases/tag/v0.7.0)
